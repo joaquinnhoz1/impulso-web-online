@@ -1,3 +1,5 @@
 {
-  "outputDirectory": "nueva-web-editada"
+  "buildCommand": "echo ok",
+  "outputDirectory": "nueva-web-editada",
+  "installCommand": ""
 }
