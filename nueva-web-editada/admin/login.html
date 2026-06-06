@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Admin — Alto Impacto Web</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-primary: #080b12;
+      --bg-card: #0d1120;
+      --border: #1e2a3b;
+      --accent: #4f8dff;
+      --accent-purple: #7c3aed;
+      --text-primary: #f0f4ff;
+      --text-secondary: #8b96b0;
+      --text-muted: #5a657a;
+      --danger: #ef4444;
+      --radius: 12px;
+    }
+
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .login-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .logo-icon {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, #4f8dff, #7c3aed);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .logo-text { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; }
+    .logo-sub { font-size: 0.75rem; color: var(--text-muted); margin-top: 1px; }
+
+    h1 { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .subtitle { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 2rem; }
+
+    label {
+      display: block;
+      font-size: 0.83rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 0.4rem;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      background: #080b12;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.7rem 0.9rem;
+      color: var(--text-primary);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+      margin-bottom: 1.1rem;
+    }
+
+    input:focus { border-color: var(--accent); }
+
+    .btn {
+      width: 100%;
+      padding: 0.8rem;
+      background: linear-gradient(135deg, #4f8dff, #7c3aed);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      margin-top: 0.4rem;
+    }
+
+    .btn:hover { opacity: 0.9; }
+
+    .error {
+      background: rgba(239,68,68,0.1);
+      border: 1px solid rgba(239,68,68,0.3);
+      color: #ef4444;
+      border-radius: 8px;
+      padding: 0.65rem 0.9rem;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    .hint {
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+
+    #setup-section { display: none; }
+  </style>
+</head>
+<body>
+<div class="login-card">
+  <div class="logo">
+    <div class="logo-icon">AI</div>
+    <div>
+      <div class="logo-text">Alto Impacto Web</div>
+      <div class="logo-sub">Panel de administración</div>
+    </div>
+  </div>
+
+  <!-- Login -->
+  <div id="login-section">
+    <h1>Bienvenido</h1>
+    <p class="subtitle">Ingresá tu usuario y contraseña para continuar.</p>
+    <div class="error" id="login-error"></div>
+    <label for="username">Usuario</label>
+    <input type="text" id="username" placeholder="admin" autocomplete="username" />
+    <label for="password">Contraseña</label>
+    <input type="password" id="password" placeholder="••••••••" autocomplete="current-password" />
+    <button class="btn" onclick="handleLogin()">Ingresar</button>
+    <p class="hint">Solo vos tenés acceso a este panel.</p>
+  </div>
+
+  <!-- First-run setup -->
+  <div id="setup-section">
+    <h1>Configurar acceso</h1>
+    <p class="subtitle">Primera vez. Creá tu usuario y contraseña para el panel.</p>
+    <div class="error" id="setup-error"></div>
+    <label for="setup-user">Usuario</label>
+    <input type="text" id="setup-user" placeholder="admin" />
+    <label for="setup-pass">Contraseña</label>
+    <input type="password" id="setup-pass" placeholder="Mínimo 6 caracteres" />
+    <label for="setup-pass2">Confirmar contraseña</label>
+    <input type="password" id="setup-pass2" placeholder="Repetir contraseña" />
+    <button class="btn" onclick="handleSetup()">Crear acceso</button>
+  </div>
+</div>
+
+<script>
+  const STORAGE_KEY = 'aiw_auth';
+
+  async function sha256(str) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+  }
+
+  function init() {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (!stored) {
+      document.getElementById('login-section').style.display = 'none';
+      document.getElementById('setup-section').style.display = 'block';
+    }
+  }
+
+  async function handleSetup() {
+    const user = document.getElementById('setup-user').value.trim();
+    const pass = document.getElementById('setup-pass').value;
+    const pass2 = document.getElementById('setup-pass2').value;
+    const err = document.getElementById('setup-error');
+
+    if (!user) return showErr(err, 'Ingresá un nombre de usuario.');
+    if (pass.length < 6) return showErr(err, 'La contraseña debe tener al menos 6 caracteres.');
+    if (pass !== pass2) return showErr(err, 'Las contraseñas no coinciden.');
+
+    const hash = await sha256(user + ':' + pass);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ user, hash }));
+    startSession(user);
+  }
+
+  async function handleLogin() {
+    const user = document.getElementById('username').value.trim();
+    const pass = document.getElementById('password').value;
+    const err = document.getElementById('login-error');
+    const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+
+    if (!user || !pass) return showErr(err, 'Completá usuario y contraseña.');
+
+    const hash = await sha256(user + ':' + pass);
+    if (hash !== stored.hash) return showErr(err, 'Usuario o contraseña incorrectos.');
+
+    startSession(user);
+  }
+
+  function startSession(user) {
+    sessionStorage.setItem('aiw_session', JSON.stringify({ user, ts: Date.now() }));
+    window.location.href = 'index.html';
+  }
+
+  function showErr(el, msg) {
+    el.textContent = msg;
+    el.style.display = 'block';
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      const ls = document.getElementById('login-section');
+      if (ls.style.display !== 'none') handleLogin();
+      else handleSetup();
+    }
+  });
+
+  // Already logged in? Redirect.
+  if (sessionStorage.getItem('aiw_session')) window.location.href = 'index.html';
+
+  init();
+</script>
+</body>
+</html>

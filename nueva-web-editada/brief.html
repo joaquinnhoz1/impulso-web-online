@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulario de Requisitos — Diseño Web</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="./css/brief.css">
+</head>
+<body>
+
+<nav class="navbar" id="navbar" role="navigation" aria-label="Navegación principal">
+  <div class="nav-inner">
+    <a href="./index.html" class="nav-logo" aria-label="AltoImpacto Web inicio">
+      <span class="logo-mark">AI</span>
+      <span class="logo-text">AltoImpacto<strong>Web</strong></span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="./index.html#servicios">Servicios</a></li>
+      <li><a href="./index.html#como-funciona">Proceso</a></li>
+      <li><a href="./index.html#resultados">Resultados</a></li>
+      <li><a href="./index.html#precios">Precios</a></li>
+    </ul>
+    <a href="./index.html#contacto" class="btn btn-nav">
+      Hablemos
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+</nav>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="header-label">
+      <span>Diseño & Desarrollo Web</span>
+    </div>
+    <h1>
+  Contame qué web
+  <br>
+  <em>querés crear</em>
+</h1>
+    <p class="header-desc">
+Completá este brief para entender tu negocio, objetivos y estilo visual ideal. Así puedo prepararte una propuesta personalizada y mucho más precisa.
+</p>
+  </div>
+</header>
+
+<nav class="progress-nav">
+  <div class="progress-nav-inner">
+    <a class="nav-step active" href="#s1"><span class="nav-num">1</span> General</a>
+    <a class="nav-step" href="#s2"><span class="nav-num">2</span> Estructura</a>
+    <a class="nav-step" href="#s3"><span class="nav-num">3</span> Contenido</a>
+    <a class="nav-step" href="#s4"><span class="nav-num">4</span> Diseño</a>
+    <a class="nav-step" href="#s5"><span class="nav-num">5</span> Funcionalidades</a>
+    <a class="nav-step" href="#s6"><span class="nav-num">6</span> Adicional</a>
+  </div>
+</nav>
+
+<form 
+  class="form-wrap" 
+  id="mainForm"
+  action="https://api.web3forms.com/submit"
+  method="POST"
+><input type="hidden" name="access_key" value="f49aa82e-8252-43c2-a390-9a9e35567040">
+<input type="hidden" name="subject" value="Nuevo brief completo desde Alto Impacto Web">
+<input type="hidden" name="from_name" value="Alto Impacto Web - Brief de Cliente">
+<input type="hidden" name="redirect" value="https://www.altoimpactoweb.lat/brief.html?enviado=true">
+
+  
+
+  <!-- SECTION 1 -->
+  <section class="section" id="s1">
+    <div class="section-head">
+      <div class="section-num">01</div>
+      <div class="section-title-wrap">
+        <h2 class="section-title">Información General del Proyecto</h2>
+        <p class="section-subtitle">Cuéntenos sobre usted y su negocio</p>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>Nombre del Cliente / Empresa <span class="req">*</span></label>
+        <input type="text" name="nombre_cliente" placeholder="Ej. Estudio Arq. Pérez" required>
+      </div>
+      <div class="field">
+        <label>Nombre del Sitio Web <span style="opacity:.5">(si ya lo tiene)</span></label>
+        <input type="text" name="nombre_sitio" placeholder="Ej. estudioperez.com">
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Email de Contacto <span class="req">*</span></label>
+      <input type="email" name="email" placeholder="hola@empresa.com" required>
+    </div>
+
+    <div class="field">
+      <label>Descripción General del Negocio o Propósito del Sitio <span class="req">*</span></label>
+      <textarea name="descripcion" rows="4" placeholder="Describa brevemente a qué se dedica su empresa o cuál es el propósito principal del sitio web..." required></textarea>
+    </div>
+
+    <div class="field">
+      <label>Público Objetivo Principal <span class="req">*</span></label>
+      <textarea name="publico" rows="3" placeholder="Ej. Profesionales de 25–45 años interesados en diseño de interiores, con poder adquisitivo medio-alto..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>Objetivos Principales del Sitio Web <span class="req">*</span></label>
+      <div class="check-group">
+        <input type="checkbox" id="obj1" name="objetivo[]" value="leads"><label class="check-label" for="obj1">Generar leads / contactos</label>
+        <input type="checkbox" id="obj2" name="objetivo[]" value="venta"><label class="check-label" for="obj2">Vender productos</label>
+        <input type="checkbox" id="obj3" name="objetivo[]" value="informar"><label class="check-label" for="obj3">Informar / educar</label>
+        <input type="checkbox" id="obj4" name="objetivo[]" value="marca"><label class="check-label" for="obj4">Construir marca</label>
+        <input type="checkbox" id="obj5" name="objetivo[]" value="reservas"><label class="check-label" for="obj5">Gestionar reservas</label>
+        <input type="checkbox" id="obj6" name="objetivo[]" value="comunidad"><label class="check-label" for="obj6">Crear comunidad</label>
+        <input type="checkbox" id="obj7" name="objetivo[]" value="otro_obj"><label class="check-label" for="obj7">Otro</label>
+      </div>
+      <input type="text" name="objetivo_otro" placeholder="Especifique otro objetivo..." style="margin-top:.6rem; display:none" id="obj_otro_input">
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section class="section" id="s2">
+    <div class="section-head">
+      <div class="section-num">02</div>
+      <div class="section-title-wrap">
+        <h2 class="section-title">Tipo de Sitio Web y Estructura</h2>
+        <p class="section-subtitle">Definamos la arquitectura de su proyecto</p>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Tipo de Sitio <span class="req">*</span></label>
+      <div class="radio-group">
+        <input type="radio" id="onepage" name="tipo_sitio" value="onepage">
+        <label class="radio-label" for="onepage">One-Page — todo en una sola página con scroll</label>
+        <input type="radio" id="multipage" name="tipo_sitio" value="multipage">
+        <label class="radio-label" for="multipage">Múltiples Páginas — navegación entre secciones</label>
+        <input type="radio" id="nolosé" name="tipo_sitio" value="nolosé">
+        <label class="radio-label" for="nolosé">No lo sé aún — necesito asesoría</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Secciones / Páginas Necesarias</label>
+      <p class="hint">Seleccione todas las que apliquen</p>
+      <div class="check-group" style="margin-top:.8rem">
+        <input type="checkbox" id="p1" name="pagina[]" value="inicio"><label class="check-label" for="p1">Inicio</label>
+        <input type="checkbox" id="p2" name="pagina[]" value="acerca"><label class="check-label" for="p2">Acerca de / Nosotros</label>
+        <input type="checkbox" id="p3" name="pagina[]" value="servicios"><label class="check-label" for="p3">Servicios</label>
+        <input type="checkbox" id="p4" name="pagina[]" value="portafolio"><label class="check-label" for="p4">Portafolio / Proyectos</label>
+        <input type="checkbox" id="p5" name="pagina[]" value="blog"><label class="check-label" for="p5">Blog / Noticias</label>
+        <input type="checkbox" id="p6" name="pagina[]" value="contacto"><label class="check-label" for="p6">Contacto</label>
+        <input type="checkbox" id="p7" name="pagina[]" value="tienda"><label class="check-label" for="p7">Tienda</label>
+        <input type="checkbox" id="p8" name="pagina[]" value="testimonios"><label class="check-label" for="p8">Testimonios</label>
+        <input type="checkbox" id="p9" name="pagina[]" value="faq"><label class="check-label" for="p9">Preguntas Frecuentes</label>
+        <input type="checkbox" id="p10" name="pagina[]" value="equipo"><label class="check-label" for="p10">Equipo</label>
+        <input type="checkbox" id="p11" name="pagina[]" value="galeria"><label class="check-label" for="p11">Galería</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Secciones o Páginas Específicas Adicionales</label>
+      <textarea name="paginas_extra" rows="3" placeholder="Describa cualquier página o sección especial que necesite y no esté en la lista..."></textarea>
+    </div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section class="section" id="s3">
+    <div class="section-head">
+      <div class="section-num">03</div>
+      <div class="section-title-wrap">
+        <h2 class="section-title">Contenido</h2>
+        <p class="section-subtitle">Textos, imágenes y materiales del sitio</p>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>¿Tiene el Contenido Preparado? <span class="req">*</span></label>
+      <div class="radio-group">
+        <input type="radio" id="cont_si" name="contenido_preparado" value="si">
+        <label class="radio-label" for="cont_si">Sí, tengo todo listo</label>
+        <input type="radio" id="cont_parcial" name="contenido_preparado" value="parcial">
+        <label class="radio-label" for="cont_parcial">Parcialmente</label>
+        <input type="radio" id="cont_no" name="contenido_preparado" value="no">
+        <label class="radio-label" for="cont_no">No, necesito ayuda</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>¿Necesita Ayuda para la Creación de Contenido?</label>
+      <div class="radio-group">
+        <input type="radio" id="ay_si" name="ayuda_contenido" value="si">
+        <label class="radio-label" for="ay_si">Sí, textos y/o imágenes</label>
+        <input type="radio" id="ay_no" name="ayuda_contenido" value="no">
+        <label class="radio-label" for="ay_no">No, lo gestiono yo</label>
+        <input type="radio" id="ay_parcial" name="ayuda_contenido" value="parcial">
+        <label class="radio-label" for="ay_parcial">Solo para algunos textos</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Tipo de Contenido a Mostrar</label>
+      <div class="check-group">
+        <input type="checkbox" id="c1" name="tipo_contenido[]" value="servicios"><label class="check-label" for="c1">Descripciones de servicios</label>
+        <input type="checkbox" id="c2" name="tipo_contenido[]" value="portafolio"><label class="check-label" for="c2">Imágenes de portafolio</label>
+        <input type="checkbox" id="c3" name="tipo_contenido[]" value="videos"><label class="check-label" for="c3">Videos</label>
+        <input type="checkbox" id="c4" name="tipo_contenido[]" value="testimonios_c"><label class="check-label" for="c4">Testimonios de clientes</label>
+        <input type="checkbox" id="c5" name="tipo_contenido[]" value="blog_c"><label class="check-label" for="c5">Artículos de blog</label>
+        <input type="checkbox" id="c6" name="tipo_contenido[]" value="productos"><label class="check-label" for="c6">Fichas de productos</label>
+        <input type="checkbox" id="c7" name="tipo_contenido[]" value="equipo_c"><label class="check-label" for="c7">Perfiles del equipo</label>
+        <input type="checkbox" id="c8" name="tipo_contenido[]" value="documentos"><label class="check-label" for="c8">Documentos / Descargas</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Detalles Adicionales sobre el Contenido</label>
+      <textarea name="contenido_detalle" rows="3" placeholder="Indique cualquier detalle relevante sobre los materiales que tiene o necesita..."></textarea>
+    </div>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section class="section" id="s4">
+    <div class="section-head">
+      <div class="section-num">04</div>
+      <div class="section-title-wrap">
+        <h2 class="section-title">Diseño y Estilo Visual</h2>
+        <p class="section-subtitle">La identidad y estética de su sitio</p>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Preferencias de Color</label>
+      <textarea name="colores" rows="3" placeholder="Ej. Azul marino y dorado, tons terrosos, blanco con acentos negros. Si tiene códigos hex, inclúyalos. Ej. #2C3E50, #F39C12..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>Estilo General Buscado</label>
+      <div class="check-group">
+        <input type="checkbox" id="est1" name="estilo[]" value="moderno"><label class="check-label" for="est1">Moderno</label>
+        <input type="checkbox" id="est2" name="estilo[]" value="minimalista"><label class="check-label" for="est2">Minimalista</label>
+        <input type="checkbox" id="est3" name="estilo[]" value="corporativo"><label class="check-label" for="est3">Corporativo</label>
+        <input type="checkbox" id="est4" name="estilo[]" value="rustico"><label class="check-label" for="est4">Rústico / Natural</label>
+        <input type="checkbox" id="est5" name="estilo[]" value="divertido"><label class="check-label" for="est5">Divertido / Dinámico</label>
+        <input type="checkbox" id="est6" name="estilo[]" value="elegante"><label class="check-label" for="est6">Elegante / Lujoso</label>
+        <input type="checkbox" id="est7" name="estilo[]" value="clasico"><label class="check-label" for="est7">Clásico / Tradicional</label>
+        <input type="checkbox" id="est8" name="estilo[]" value="artistico"><label class="check-label" for="est8">Artístico / Creativo</label>
+        <input type="checkbox" id="est9" name="estilo[]" value="tecnologico"><label class="check-label" for="est9">Tecnológico / Futurista</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Preferencias de Tipografía (Fuentes)</label>
+      <textarea name="tipografia" rows="3" placeholder="Ej. Fuentes sans-serif modernas, fuentes serif clásicas. Puede nombrar fuentes específicas de Google Fonts si las conoce..."></textarea>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="field">
+      <label>Sitios Web que le Gustan Visualmente</label>
+      <p class="hint">Agregue los enlaces de referencia que más le inspiran</p>
+      <div id="urls-like">
+        <div class="url-entry">
+          <input type="url" name="ref_gusta[]" placeholder="https://ejemplo.com">
+        </div>
+        <div class="url-entry">
+          <input type="url" name="ref_gusta[]" placeholder="https://ejemplo.com">
+        </div>
+      </div>
+      <button type="button" class="btn-add-url" onclick="addUrl('urls-like', 'ref_gusta[]')">+ Añadir otro enlace</button>
+      <div class="field" style="margin-top:1rem">
+        <label>¿Qué le gusta de esos sitios?</label>
+        <textarea name="ref_gusta_nota" rows="2" placeholder="Ej. Me gusta la distribución, la paleta de colores, la sencillez del menú..."></textarea>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Sitios Web que NO le Gustan Visualmente</label>
+      <p class="hint">Saber qué no quiere es tan valioso como saber qué quiere</p>
+      <div id="urls-dislike">
+        <div class="url-entry">
+          <input type="url" name="ref_disgusta[]" placeholder="https://ejemplo.com">
+        </div>
+      </div>
+      <button type="button" class="btn-add-url" onclick="addUrl('urls-dislike', 'ref_disgusta[]')">+ Añadir otro enlace</button>
+      <div class="field" style="margin-top:1rem">
+        <label>¿Qué no le gusta de esos sitios?</label>
+        <textarea name="ref_disgusta_nota" rows="2" placeholder="Ej. Demasiado texto, colores agresivos, diseño anticuado..."></textarea>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5 -->
+  <section class="section" id="s5">
+    <div class="section-head">
+      <div class="section-num">05</div>
+      <div class="section-title-wrap">
+        <h2 class="section-title">Funcionalidades Específicas</h2>
+        <p class="section-subtitle">Características técnicas y herramientas del sitio</p>
+      </div>
+    </div>
+
+    <!-- CONTACT FORM -->
+    <div class="field">
+      <label>¿Necesita Formulario de Contacto?</label>
+      <div class="radio-group">
+        <input type="radio" id="fc_si" name="form_contacto" value="si" onchange="toggleConditional('sub-contacto', 'si', this)">
+        <label class="radio-label" for="fc_si">Sí</label>
+        <input type="radio" id="fc_no" name="form_contacto" value="no" onchange="toggleConditional('sub-contacto', 'si', this)">
+        <label class="radio-label" for="fc_no">No</label>
+      </div>
+      <div class="subsection conditional" id="sub-contacto">
+        <label>Campos del Formulario</label>
+        <div class="check-group">
+          <input type="checkbox" id="fc1" name="form_campo[]" value="nombre"><label class="check-label" for="fc1">Nombre</label>
+          <input type="checkbox" id="fc2" name="form_campo[]" value="email_f"><label class="check-label" for="fc2">Email</label>
+          <input type="checkbox" id="fc3" name="form_campo[]" value="telefono"><label class="check-label" for="fc3">Teléfono</label>
+          <input type="checkbox" id="fc4" name="form_campo[]" value="mensaje"><label class="check-label" for="fc4">Mensaje</label>
+          <input type="checkbox" id="fc5" name="form_campo[]" value="asunto"><label class="check-label" for="fc5">Asunto</label>
+          <input type="checkbox" id="fc6" name="form_campo[]" value="empresa_f"><label class="check-label" for="fc6">Empresa</label>
+          <input type="checkbox" id="fc7" name="form_campo[]" value="archivo"><label class="check-label" for="fc7">Adjunto de archivo</label>
+        </div>
+        <div style="margin-top:.8rem">
+          <label>Otros campos</label>
+          <input type="text" name="form_campo_otro" placeholder="Especifique campos adicionales...">
+        </div>
+      </div>
+    </div>
+
+    <!-- SOCIAL MEDIA -->
+    <div class="field">
+      <label>¿Necesita Integración con Redes Sociales?</label>
+      <div class="check-group">
+        <input type="checkbox" id="rr1" name="rrss[]" value="facebook"><label class="check-label" for="rr1">Facebook</label>
+        <input type="checkbox" id="rr2" name="rrss[]" value="instagram"><label class="check-label" for="rr2">Instagram</label>
+        <input type="checkbox" id="rr3" name="rrss[]" value="twitter"><label class="check-label" for="rr3">X / Twitter</label>
+        <input type="checkbox" id="rr4" name="rrss[]" value="linkedin"><label class="check-label" for="rr4">LinkedIn</label>
+        <input type="checkbox" id="rr5" name="rrss[]" value="youtube"><label class="check-label" for="rr5">YouTube</label>
+        <input type="checkbox" id="rr6" name="rrss[]" value="tiktok"><label class="check-label" for="rr6">TikTok</label>
+        <input type="checkbox" id="rr7" name="rrss[]" value="pinterest"><label class="check-label" for="rr7">Pinterest</label>
+        <input type="checkbox" id="rr8" name="rrss[]" value="whatsapp"><label class="check-label" for="rr8">WhatsApp</label>
+        <input type="checkbox" id="rr9" name="rrss[]" value="ninguna"><label class="check-label" for="rr9">Ninguna</label>
+      </div>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="field">
+      <label>¿Necesita Galería de Imágenes o Portafolio?</label>
+      <div class="radio-group">
+        <input type="radio" id="gal_si" name="galeria" value="si">
+        <label class="radio-label" for="gal_si">Sí</label>
+        <input type="radio" id="gal_no" name="galeria" value="no">
+        <label class="radio-label" for="gal_no">No</label>
+      </div>
+    </div>
+
+    <!-- BLOG -->
+    <div class="field">
+      <label>¿Necesita un Blog?</label>
+      <div class="radio-group">
+        <input type="radio" id="blog_si" name="blog" value="si" onchange="toggleConditional('sub-blog', 'si', this)">
+        <label class="radio-label" for="blog_si">Sí</label>
+        <input type="radio" id="blog_no" name="blog" value="no" onchange="toggleConditional('sub-blog', 'si', this)">
+        <label class="radio-label" for="blog_no">No</label>
+      </div>
+      <div class="subsection conditional" id="sub-blog">
+        <label>¿Con qué frecuencia publicará? (Estimado)</label>
+        <select name="blog_frecuencia">
+          <option value="">Seleccionar...</option>
+          <option>Diariamente</option>
+          <option>Semanalmente</option>
+          <option>Quincenalmente</option>
+          <option>Mensualmente</option>
+          <option>Ocasionalmente</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- ECOMMERCE -->
+    <div class="field">
+      <label>¿Necesita Tienda Online (E-commerce)?</label>
+      <div class="radio-group">
+        <input type="radio" id="eco_si" name="ecommerce" value="si" onchange="toggleConditional('sub-eco', 'si', this)">
+        <label class="radio-label" for="eco_si">Sí</label>
+        <input type="radio" id="eco_no" name="ecommerce" value="no" onchange="toggleConditional('sub-eco', 'si', this)">
+        <label class="radio-label" for="eco_no">No</label>
+      </div>
+      <div class="subsection conditional" id="sub-eco">
+        <div class="field-row">
+          <div class="field">
+            <label>Número Aprox. de Productos</label>
+            <input type="number" name="num_productos" min="1" placeholder="Ej. 50">
+          </div>
+          <div class="field">
+            <label>Tipo de Productos</label>
+            <select name="tipo_productos">
+              <option value="">Seleccionar...</option>
+              <option>Físicos (requieren envío)</option>
+              <option>Digitales (descarga)</option>
+              <option>Servicios</option>
+              <option>Mixtos</option>
+            </select>
+          </div>
+        </div>
+        <label style="margin-top:.6rem">Pasarelas de Pago Preferidas</label>
+        <div class="check-group" style="margin-top:.5rem">
+          <input type="checkbox" id="pp1" name="pago[]" value="paypal"><label class="check-label" for="pp1">PayPal</label>
+          <input type="checkbox" id="pp2" name="pago[]" value="stripe"><label class="check-label" for="pp2">Stripe</label>
+          <input type="checkbox" id="pp3" name="pago[]" value="mercadopago"><label class="check-label" for="pp3">Mercado Pago</label>
+          <input type="checkbox" id="pp4" name="pago[]" value="transferencia"><label class="check-label" for="pp4">Transferencia bancaria</label>
+          <input type="checkbox" id="pp5" name="pago[]" value="bizum"><label class="check-label" for="pp5">Bizum</label>
+          <input type="checkbox" id="pp6" name="pago[]" value="otro_pp"><label class="check-label" for="pp6">Otra</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- OTHER FEATURES -->
+    <div class="field">
+      <label>Otras Funcionalidades Deseadas</label>
+      <div class="check-group">
+        <input type="checkbox" id="of1" name="otras[]" value="reservas"><label class="check-label" for="of1">Sistema de reservas</label>
+        <input type="checkbox" id="of2" name="otras[]" value="miembros"><label class="check-label" for="of2">Área de miembros / login</label>
+        <input type="checkbox" id="of3" name="otras[]" value="mapa"><label class="check-label" for="of3">Mapa interactivo</label>
+        <input type="checkbox" id="of4" name="otras[]" value="chat"><label class="check-label" for="of4">Chat en vivo</label>
+        <input type="checkbox" id="of5" name="otras[]" value="newsletter"><label class="check-label" for="of5">Newsletter / suscripción</label>
+        <input type="checkbox" id="of6" name="otras[]" value="calculadora"><label class="check-label" for="of6">Calculadora / presupuestador</label>
+        <input type="checkbox" id="of7" name="otras[]" value="multiidioma"><label class="check-label" for="of7">Múltiples idiomas</label>
+        <input type="checkbox" id="of8" name="otras[]" value="foro"><label class="check-label" for="of8">Foro / comunidad</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Describa Cualquier Funcionalidad Adicional o Especial</label>
+      <textarea name="func_extra" rows="4" placeholder="Detalle cualquier función o integración que no esté en las opciones anteriores..."></textarea>
+    </div>
+  </section>
+
+  <!-- SECTION 6 -->
+  <section class="section" id="s6">
+    <div class="section-head">
+      <div class="section-num">06</div>
+      <div class="section-title-wrap">
+        <h2 class="section-title">Información Adicional</h2>
+        <p class="section-subtitle">Últimos detalles para comenzar</p>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>¿Tiene Logotipo o Identidad Visual Existente?</label>
+      <div class="radio-group">
+        <input type="radio" id="logo_si" name="logo" value="si">
+        <label class="radio-label" for="logo_si">Sí, tengo logotipo y manual de marca</label>
+        <input type="radio" id="logo_parcial" name="logo" value="parcial">
+        <label class="radio-label" for="logo_parcial">Tengo logotipo pero no manual</label>
+        <input type="radio" id="logo_no" name="logo" value="no">
+        <label class="radio-label" for="logo_no">No, necesito diseño de identidad</label>
+      </div>
+      <p class="hint" style="margin-top:.5rem">Los archivos de logotipo se podrán enviar por email al finalizar este formulario.</p>
+    </div>
+
+    <div class="field">
+      <label>¿Tiene Dominio y/o Hosting contratado?</label>
+      <div class="radio-group">
+        <input type="radio" id="dom_si" name="dominio" value="si">
+        <label class="radio-label" for="dom_si">Sí, tengo ambos</label>
+        <input type="radio" id="dom_parcial" name="dominio" value="parcial">
+        <label class="radio-label" for="dom_parcial">Solo dominio / Solo hosting</label>
+        <input type="radio" id="dom_no" name="dominio" value="no">
+        <label class="radio-label" for="dom_no">No, necesito ayuda</label>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>Presupuesto Aproximado</label>
+        <select name="presupuesto">
+          <option value="">Seleccionar rango...</option>
+          <option>Menos de Usd99</option>
+          <option>Usd100 – Usd199</option>
+          <option>Usd200 – Usd699</option>
+          <option>A determinar / No lo sé</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Fecha Límite Deseada</label>
+        <input type="date" name="fecha_limite">
+      </div>
+    </div>
+
+    <div class="field">
+      <label>¿Ha trabajado con un diseñador web anteriormente?</label>
+      <div class="radio-group">
+        <input type="radio" id="prev_si" name="experiencia_previa" value="si">
+        <label class="radio-label" for="prev_si">Sí</label>
+        <input type="radio" id="prev_no" name="experiencia_previa" value="no">
+        <label class="radio-label" for="prev_no">No, es mi primer proyecto web</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Comentarios, Expectativas o Información Adicional</label>
+      <textarea name="comentarios" rows="5" placeholder="¿Hay algo más que deba saber sobre su negocio, sus necesidades o sus expectativas para este proyecto? No dude en compartir cualquier detalle relevante..."></textarea>
+    </div>
+  </section>
+
+  <!-- SUBMIT -->
+  <div class="submit-area">
+    <p class="submit-note">Al enviar este formulario, nos comprometemos a responderle en un plazo máximo de 48 horas hábiles.</p>
+    <button type="submit" class="btn-submit">Enviar Formulario →</button>
+  </div>
+
+</form>
+
+<div class="toast" id="toast">✓ Formulario enviado correctamente</div>
+
+<script>
+// Nav highlight on scroll
+const sections = document.querySelectorAll('.section');
+const navSteps = document.querySelectorAll('.nav-step');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const id = e.target.id;
+      navSteps.forEach(n => {
+        n.classList.toggle('active', n.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { threshold: 0.3 });
+sections.forEach(s => observer.observe(s));
+
+// Conditional show/hide
+function toggleConditional(id, showValue, radio) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('visible', radio.value === showValue);
+}
+
+// Show "other" objective input
+document.getElementById('obj7').addEventListener('change', function() {
+  document.getElementById('obj_otro_input').style.display = this.checked ? 'block' : 'none';
+});
+
+// Add URL fields
+function addUrl(containerId, name) {
+  const container = document.getElementById(containerId);
+  const div = document.createElement('div');
+  div.className = 'url-entry';
+  div.innerHTML = `<input type="url" name="${name}" placeholder="https://ejemplo.com">`;
+  container.appendChild(div);
+}
+
+
+
+
+// Smooth scroll for nav links
+document.querySelectorAll('.nav-step').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+<!-- CURSOR PERSONALIZADO -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursorFollower"></div>
+
+<script src="./js/main.js"></script>
+
+</body>
+</html>

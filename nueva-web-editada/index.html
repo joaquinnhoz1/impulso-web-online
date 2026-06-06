@@ -1,0 +1,1500 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+
+    <meta property="og:title" content="Alto Impacto Web | Diseño Web Profesional">
+
+<meta property="og:description" content="Creamos páginas web modernas y profesionales para negocios y emprendimientos.">
+
+<meta property="og:image" content="https://altoimpactoweb.lat/img/preview.jpg">
+
+<meta property="og:url" content="https://altoimpactoweb.lat">
+
+<meta property="og:type" content="website">
+
+    <meta
+      name="google-site-verification"
+      content="SIrFewCU_a12U4jzkhs11Qge566l1yrMkFHwccX7CVk"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Alto Impacto Web | Diseño Web Profesional</title>
+
+    <meta
+      name="description"
+      content="Creamos páginas web modernas y profesionales para negocios, emprendimientos y marcas."
+    />
+    <meta
+      name="keywords"
+      content="diseño web, páginas web, desarrollo web, landing page, páginas para negocios"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://altoimpactoweb.lat/" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/main.css" />
+    <style>
+      /* ── Demo modal ─────────────────────────── */
+      .portfolio-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1.2rem;
+      }
+      .portfolio-demo-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: var(--font-body);
+        font-size: 0.875rem;
+        font-weight: 600;
+        padding: 0;
+        color: rgba(79, 141, 255, 0.6);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        transition: gap 0.2s ease, color 0.2s ease;
+      }
+      .portfolio-demo-btn:hover {
+        gap: 0.7rem;
+        color: var(--text-1);
+      }
+      .portfolio-demo-btn svg { flex-shrink: 0; transition: transform 0.2s var(--ease-out); }
+      .portfolio-demo-btn:hover svg { transform: translateX(3px); }
+      #demoModal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 9000;
+        background: rgba(8, 11, 18, 0.97);
+        backdrop-filter: blur(8px);
+        flex-direction: column;
+      }
+      #demoModal.is-open { display: flex; }
+      .demo-modal__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.65rem 1.25rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        flex-shrink: 0;
+        background: rgba(13, 17, 32, 0.9);
+      }
+      .demo-modal__title {
+        font-family: var(--font-display);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--text-2);
+        letter-spacing: 0.03em;
+      }
+      .demo-modal__close {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text-2);
+        cursor: pointer;
+        transition: background 0.2s, color 0.2s;
+        flex-shrink: 0;
+      }
+      .demo-modal__close:hover {
+        background: rgba(255, 255, 255, 0.12);
+        color: var(--text-1);
+      }
+      .demo-modal__frame {
+        flex: 1;
+        width: 100%;
+        border: none;
+        display: block;
+        background: #04070d;
+      }
+    </style>
+
+    <!-- Google Analytics -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J61VKQ2LW4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-J61VKQ2LW4');
+</script>
+
+</script> 
+  </head>
+  <body>
+    <!-- CURSOR PERSONALIZADO -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+    <!-- NOISE OVERLAY -->
+    <div class="noise-overlay" aria-hidden="true"></div>
+
+    <!-- ============================================================
+       NAVBAR
+  ============================================================ -->
+    <nav
+      class="navbar"
+      id="navbar"
+      role="navigation"
+      aria-label="Navegación principal"
+    >
+      <div class="nav-inner">
+        <a href="#hero" class="nav-logo" aria-label="AltoImpacto Web inicio">
+          <span class="logo-mark">AI</span>
+          <span class="logo-text">AltoImpacto<strong>Web</strong></span>
+        </a>
+
+        <ul class="nav-links" role="list">
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#como-funciona">Proceso</a></li>
+          <li><a href="#resultados">Resultados</a></li>
+          <li><a href="#precios">Precios</a></li>
+        </ul>
+
+        <a href="#contacto" class="btn btn-nav">
+          Hablemos
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 14 14"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M2 7h10M7 2l5 5-5 5"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+        >
+          <span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <ul role="list">
+        <li><a href="#servicios" class="mobile-link">Servicios</a></li>
+        <li><a href="#como-funciona" class="mobile-link">Proceso</a></li>
+        <li><a href="#resultados" class="mobile-link">Resultados</a></li>
+        <li><a href="#precios" class="mobile-link">Precios</a></li>
+        <li>
+          <a href="#contacto" class="mobile-link mobile-cta">Hablemos →</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ============================================================
+       HERO
+  ============================================================ -->
+    <section class="hero" id="hero" aria-labelledby="hero-heading">
+      <!-- Parallax BG layers -->
+      <div class="hero-bg" aria-hidden="true">
+        <div class="hero-orb orb-1"></div>
+        <div class="hero-orb orb-2"></div>
+        <div class="hero-orb orb-3"></div>
+        <div class="hero-grid"></div>
+      </div>
+
+      <!-- Floating decorative chips -->
+      <div class="hero-chips" aria-hidden="true">
+        <!-- Left -->
+        <div class="hchip hchip--blue float-a" style="top:15%;left:3%">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6M9 13h4"/></svg>
+          Landing pages
+        </div>
+        <div class="hchip hchip--violet float-b" style="top:36%;left:5%">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          SEO básico
+        </div>
+        <div class="hchip hchip--neutral float-c" style="top:58%;left:3%">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3.08 4.18 2 2 0 0 1 5.07 2h3a2 2 0 0 1 2 1.72 12.05 12.05 0 0 0 .66 2.68 2 2 0 0 1-.45 2.11L9.09 9a16 16 0 0 0 6.91 6.91l1.27-1.27a2 2 0 0 1 2.11-.45 12.05 12.05 0 0 0 2.68.66A2 2 0 0 1 22 16.92z"/></svg>
+          WhatsApp
+        </div>
+        <div class="hchip hchip--blue float-b" style="top:78%;left:5%">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          Formularios
+        </div>
+        <!-- Right -->
+        <div class="hchip hchip--violet float-b" style="top:15%;right:3%">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+          Tiendas online
+        </div>
+        <div class="hchip hchip--blue float-c" style="top:36%;right:4%">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          Diseño responsive
+        </div>
+        <div class="hchip hchip--neutral float-a" style="top:58%;right:3%">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          Reservas web
+        </div>
+        <div class="hchip hchip--violet float-c" style="top:78%;right:4%">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Presencia online
+        </div>
+      </div>
+
+      <div class="container hero-content">
+        <div class="hero-badge reveal">
+          <span class="badge-dot"></span>
+          Diseño moderno · Entrega rápida
+        </div>
+
+        <h1 class="hero-title reveal" id="hero-heading">
+          Tu negocio,<br />
+          <span class="text-gradient">con una imagen</span><br />
+          profesional.
+        </h1>
+
+        <p class="hero-subtitle reveal">
+          Creamos páginas web pensadas para que tu negocio genere confianza, se
+          vea profesional y reciba más consultas. Diseños modernos, rápidos y
+          adaptados a celulares para emprendedores, marcas y profesionales.
+        </p>
+
+        <div class="hero-actions reveal">
+          <a href="#contacto" class="btn btn-primary">
+            Quiero mi web ahora
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M3 8h10M8 3l5 5-5 5"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+          <a href="#resultados" class="btn btn-ghost"> Ver ejemplos </a>
+        </div>
+
+        <div class="hero-social-proof reveal">
+          <div class="avatars" aria-hidden="true">
+            <div class="avatar av1"></div>
+            <div class="avatar av2"></div>
+            <div class="avatar av3"></div>
+            <div class="avatar av4"></div>
+          </div>
+          <p><strong>+120 negocios</strong> ya mejoraron su presencia online</p>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="scroll-indicator" aria-hidden="true">
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+       LOGOS / SOCIAL PROOF BAR
+  ============================================================ -->
+    <section class="logos-bar" aria-label="Tecnologías utilizadas">
+      <div class="container">
+        <p class="logos-label">Diseños modernos pensados para vender más</p>
+        <div class="logos-track">
+          <div class="logos-slide">
+            <span class="logo-item">ChatGPT</span>
+            <span class="logo-sep" aria-hidden="true">·</span>
+            <span class="logo-item">Claude AI</span>
+            <span class="logo-sep" aria-hidden="true">·</span>
+            <span class="logo-item">Midjourney</span>
+            <span class="logo-sep" aria-hidden="true">·</span>
+            <span class="logo-item">Vercel</span>
+            <span class="logo-sep" aria-hidden="true">·</span>
+            <span class="logo-item">Webflow</span>
+            <span class="logo-sep" aria-hidden="true">·</span>
+            <span class="logo-item">Framer</span>
+            <span class="logo-sep" aria-hidden="true">·</span>
+            <span class="logo-item">Figma</span>
+            <span class="logo-sep" aria-hidden="true">·</span>
+            <span class="logo-item">Google Analytics</span>
+            <span class="logo-sep" aria-hidden="true">·</span>
+            <!-- Duplicate for loop -->
+            <span class="logo-item">ChatGPT</span>
+            <span class="logo-sep" aria-hidden="true">·</span>
+            <span class="logo-item">Claude AI</span>
+            <span class="logo-sep" aria-hidden="true">·</span>
+            <span class="logo-item">Midjourney</span>
+            <span class="logo-sep" aria-hidden="true">·</span>
+            <span class="logo-item">Vercel</span>
+            <span class="logo-sep" aria-hidden="true">·</span>
+            <span class="logo-item">Webflow</span>
+            <span class="logo-sep" aria-hidden="true">·</span>
+            <span class="logo-item">Framer</span>
+            <span class="logo-sep" aria-hidden="true">·</span>
+            <span class="logo-item">Figma</span>
+            <span class="logo-sep" aria-hidden="true">·</span>
+            <span class="logo-item">Google Analytics</span>
+            <span class="logo-sep" aria-hidden="true">·</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+       SERVICIOS
+  ============================================================ -->
+    <section
+      class="section servicios"
+      id="servicios"
+      aria-labelledby="servicios-heading"
+    >
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label reveal">¿Qué hacemos?</span>
+          <h2 class="section-title reveal" id="servicios-heading">
+            Páginas web pensadas<br /><em>para hacer crecer tu negocio</em>
+          </h2>
+          <p class="section-desc reveal">
+            Creamos páginas web modernas que ayudan a mostrar mejor tus
+            servicios, generar confianza y conseguir nuevos clientes.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card reveal" data-delay="0">
+            <div class="card-icon">
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 28 28"
+                fill="none"
+                aria-hidden="true"
+              >
+                <rect
+                  x="2"
+                  y="4"
+                  width="24"
+                  height="16"
+                  rx="3"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M9 24h10M14 20v4"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M7 10l3 3 5-6"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <h3>Páginas Web para Emprendimientos</h3>
+            <p>
+              Diseños modernos y claros para que las personas entiendan
+              rápidamente qué ofrecés y puedan contactarte fácilmente.
+            </p>
+            <ul class="card-features" role="list">
+              <li>Diseño moderno y profesional</li>
+              <li>Botón directo a WhatsApp</li>
+              <li>Optimizada para celulares</li>
+            </ul>
+            <a href="#contacto" class="card-link">Empezar →</a>
+          </article>
+
+          <article
+            class="service-card service-card--featured reveal"
+            data-delay="100"
+          >
+            <div class="card-badge">Más popular</div>
+            <div class="card-icon">
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 28 28"
+                fill="none"
+                aria-hidden="true"
+              >
+                <circle
+                  cx="14"
+                  cy="14"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M14 8v6l4 2"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M8 4l-2-2M20 4l2-2M8 24l-2 2M20 24l2 2"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <h3>Página Web Profesional</h3>
+            <p>
+              Una página completa para mostrar tu negocio, tus servicios y
+              generar más confianza en internet.
+            </p>
+            <ul class="card-features" role="list">
+              <li>Secciones personalizadas</li>
+              <li>Mejor presencia en Google</li>
+              <li>Formularios y WhatsApp integrados</li>
+            </ul>
+            <a href="#contacto" class="card-link">Empezar →</a>
+          </article>
+
+          <!--
+<article class="service-card reveal" data-delay="200">
+  <div class="card-icon">
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+      <path d="M6 22V12l8-8 8 8v10a1 1 0 01-1 1H7a1 1 0 01-1-1z" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M11 23v-7h6v7" stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+  </div>
+
+  <h3>Tiendas Online</h3>
+
+  <p>
+    Vendé tus productos online con una tienda moderna,
+    fácil de usar y lista para recibir pedidos.
+  </p>
+
+  <ul class="card-features" role="list">
+    <li>Catálogo de productos</li>
+    <li>Pagos online integrados</li>
+    <li>Gestión simple de pedidos</li>
+  </ul>
+
+  <a href="#contacto" class="card-link">Empezar →</a>
+</article>
+-->
+
+          <article class="service-card reveal" data-delay="300">
+            <div class="card-icon">
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 28 28"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 20l6-6 4 4 4-5 6 7"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <circle
+                  cx="8"
+                  cy="8"
+                  r="4"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+              </svg>
+            </div>
+            <h3>Rediseño & Optimización</h3>
+            <p>
+              ¿Tu web se ve anticuada? La rediseñamos desde cero con IA,
+              mejorando velocidad, SEO y tasa de conversión.
+            </p>
+            <ul class="card-features" role="list">
+              <li>Auditoría UX completa</li>
+              <li>Mejora de Core Web Vitals</li>
+              <li>A/B testing básico incluido</li>
+            </ul>
+            <a href="#contacto" class="card-link">Empezar →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+       COMO FUNCIONA
+  ============================================================ -->
+    <section
+      class="section proceso"
+      id="como-funciona"
+      aria-labelledby="proceso-heading"
+    >
+      <div class="proceso-bg" aria-hidden="true">
+        <div class="proceso-orb"></div>
+      </div>
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label reveal">¿Cómo funciona?</span>
+          <h2 class="section-title reveal" id="proceso-heading">
+            De idea a web publicada<br /><em>en 4 pasos</em>
+          </h2>
+        </div>
+
+        <div class="steps">
+          <div class="step reveal" data-delay="0">
+            <div class="step-number" aria-hidden="true">01</div>
+            <div class="step-content">
+              <h3>Briefing con IA</h3>
+              <p>
+                Completás un cuestionario inteligente. Usamos IA para extraer la
+                esencia de tu negocio, tu público objetivo y tus objetivos de
+                conversión.
+              </p>
+            </div>
+          </div>
+
+          <div class="step-connector" aria-hidden="true"></div>
+
+          <div class="step reveal" data-delay="150">
+            <div class="step-number" aria-hidden="true">02</div>
+            <div class="step-content">
+              <h3>Diseño & Copy IA</h3>
+              <p>
+                Generamos el wireframe, la paleta de colores y el copywriting
+                persuasivo usando ChatGPT + herramientas especializadas. Aprobás
+                antes de construir.
+              </p>
+            </div>
+          </div>
+
+          <div class="step-connector" aria-hidden="true"></div>
+
+          <div class="step reveal" data-delay="300">
+            <div class="step-number" aria-hidden="true">03</div>
+            <div class="step-content">
+              <h3>Desarrollo & Refinado</h3>
+              <p>
+                Construimos la web, integramos analytics, formularios, WhatsApp
+                y SEO técnico. Revisiones incluidas hasta que quedes 100%
+                conforme.
+              </p>
+            </div>
+          </div>
+
+          <div class="step-connector" aria-hidden="true"></div>
+
+          <div class="step reveal" data-delay="450">
+            <div class="step-number" aria-hidden="true">04</div>
+            <div class="step-content">
+              <h3>Lanzamiento & Soporte</h3>
+              <p>
+                Publicamos en tu dominio, configuramos el hosting y te
+                entregamos acceso completo. Soporte 30 días post-lanzamiento
+                incluido.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ============================================================
+       PORTFOLIO / RESULTADOS
+  ============================================================ -->
+    <section
+      class="section portfolio"
+      id="resultados"
+      aria-labelledby="resultados-heading"
+    >
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label reveal">Resultados</span>
+          <h2 class="section-title reveal" id="resultados-heading">
+            Trabajos que<br /><em>generan resultados</em>
+          </h2>
+          <p class="section-desc reveal">
+            Cada proyecto está diseñado para convertir visitantes en clientes.
+          </p>
+        </div>
+
+        <div class="portfolio-grid">
+
+          <!-- ── Proyecto: Turnos Padel PRO ── -->
+          <article class="portfolio-card reveal" data-delay="0">
+            <div class="browser-mockup">
+              <div class="browser-bar">
+                <div class="browser-dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="browser-url">turnospadelpro.vercel.app</div>
+              </div>
+              <div class="browser-screen">
+                <img
+                  src="img/proyecto-padelpro.jpg"
+                  alt="Turnos Padel PRO — Sistema de reservas online"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-tags">
+                <span class="tag">Sistema de Reservas</span>
+                <span class="tag">Deporte</span>
+                <span class="tag">App Web</span>
+              </div>
+              <h3 class="portfolio-title">Turnos Padel PRO</h3>
+              <p class="portfolio-desc">
+                Plataforma de reservas online para canchas de pádel. Sistema de
+                gestión de turnos, panel admin y experiencia mobile-first.
+              </p>
+              <div class="portfolio-actions">
+                <a
+                  href="https://turnospadelpro.vercel.app/"
+                  class="portfolio-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Ver proyecto
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+                <button
+                  class="portfolio-demo-btn"
+                  onclick="openDemoModal()"
+                  type="button"
+                  aria-label="Ver demo interactiva de Turnos Padel PRO"
+                >
+                  Ver demo interactiva →
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- ── Proyecto: Matilde Empanadas ── -->
+          <article class="portfolio-card reveal" data-delay="100">
+            <div class="browser-mockup">
+              <div class="browser-bar">
+                <div class="browser-dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="browser-url">matilde-empanadas.vercel.app</div>
+              </div>
+              <div class="browser-screen">
+                <img
+                  src="img/proyecto-matilde.jpg"
+                  alt="Matilde Empanadas — Web de empanadas al disco y vinos"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-tags">
+                <span class="tag">Gastronomía</span>
+                <span class="tag">Delivery</span>
+                <span class="tag">Landing Page</span>
+              </div>
+              <h3 class="portfolio-title">Matilde Empanadas</h3>
+              <p class="portfolio-desc">
+                Web para empanadas artesanales al disco, vinos y dips. Pedidos
+                por WhatsApp con doble sucursal: La Plata y Citybell.
+              </p>
+              <div class="portfolio-actions">
+                <a
+                  href="https://matilde-empanadas.vercel.app/"
+                  class="portfolio-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Ver proyecto
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ── Proyecto: Arquitectura GR ── -->
+          <article class="portfolio-card reveal" data-delay="200">
+            <div class="browser-mockup">
+              <div class="browser-bar">
+                <div class="browser-dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="browser-url">arquitectura-gr.vercel.app</div>
+              </div>
+              <div class="browser-screen">
+                <img
+                  src="img/proyecto-arquitectura-gr.jpg"
+                  alt="arq.estudio.gr — Estudio de arquitectura y diseño"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-tags">
+                <span class="tag">Arquitectura</span>
+                <span class="tag">Estudio Profesional</span>
+                <span class="tag">Portfolio</span>
+              </div>
+              <h3 class="portfolio-title">arq.estudio.gr</h3>
+              <p class="portfolio-desc">
+                Sitio para estudio de arquitectura y diseño. Showcase de obras,
+                formulario de consulta y presentación de la Arq. Giannina Ricci.
+              </p>
+              <div class="portfolio-actions">
+                <a
+                  href="https://arquitectura-gr.vercel.app/"
+                  class="portfolio-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Ver proyecto
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ── Proyecto: El Chacarero ── -->
+          <article class="portfolio-card reveal" data-delay="300">
+            <div class="browser-mockup">
+              <div class="browser-bar">
+                <div class="browser-dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="browser-url">el-chacarero.vercel.app</div>
+              </div>
+              <div class="browser-screen">
+                <img
+                  src="img/proyecto-el-chacarero.jpg"
+                  alt="El Chacarero — Productos Regionales"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-tags">
+                <span class="tag">Productos Regionales</span>
+                <span class="tag">E-commerce</span>
+                <span class="tag">Landing Page</span>
+              </div>
+              <h3 class="portfolio-title">El Chacarero</h3>
+              <p class="portfolio-desc">
+                Web para tienda de productos regionales. Presentación de
+                catálogo y canal de contacto directo con el productor.
+              </p>
+              <div class="portfolio-actions">
+                <a
+                  href="https://el-chacarero.vercel.app/"
+                  class="portfolio-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Ver proyecto
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+       RESULTADOS / TESTIMONIOS (comentado — reemplazado por portfolio)
+  ============================================================
+    <section
+      class="section resultados"
+      id="resultados"
+      aria-labelledby="resultados-heading"
+    >
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label reveal">Resultados reales</span>
+          <h2 class="section-title reveal" id="resultados-heading">
+            Lo que dicen<br /><em>nuestros clientes</em>
+          </h2>
+        </div>
+
+        <div class="stats-row reveal">
+          <div class="stat-item">
+            <span class="stat-number" data-target="20">0</span>
+            <span class="stat-suffix">+</span>
+            <p>proyectos entregados</p>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="7">0</span>
+            <span class="stat-suffix">dias</span>
+            <p>tiempo promedio de entrega</p>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="95">0</span>
+            <span class="stat-suffix">%</span>
+            <p>clientes satisfechos</p>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="5">0</span>
+            <span class="stat-suffix">x</span>
+            <p>aumento promedio en consultas</p>
+          </div>
+        </div>
+
+        <div class="testimonials-grid">
+          <blockquote class="testimonial reveal" data-delay="0">
+            <div class="testimonial-stars" aria-label="5 estrellas">★★★★★</div>
+            <p>
+              "En 3 días tenía una web que parece de empresa internacional. Las
+              consultas por WhatsApp se triplicaron el primer mes. Increíble
+              relación precio-resultado."
+            </p>
+            <footer>
+              <div class="testimonial-avatar" aria-hidden="true">ML</div>
+              <div>
+                <cite>María L.</cite>
+                <span>Consultora de Marketing, Buenos Aires</span>
+              </div>
+            </footer>
+          </blockquote>
+
+          <blockquote class="testimonial reveal" data-delay="150">
+            <div class="testimonial-stars" aria-label="5 estrellas">★★★★</div>
+            <p>
+              "Tenía miedo de que una web con IA se viera genérica. Para nada.
+              Capturaron la identidad de mi estudio jurídico a la perfección.
+              Profesionalismo total."
+            </p>
+            <footer>
+              <div class="testimonial-avatar" aria-hidden="true">RG</div>
+              <div>
+                <cite>Roberto G.</cite>
+                <span>Abogado Societario, Córdoba</span>
+              </div>
+            </footer>
+          </blockquote>
+
+          <blockquote class="testimonial reveal" data-delay="300">
+            <div class="testimonial-stars" aria-label="5 estrellas">★★★★★</div>
+            <p>
+              "Nuestra tienda online pasó de hacer 0 ventas en internet a vender
+              todos los días. El SEO que configuraron hizo toda la diferencia.
+              Los recomiendo sin dudarlo."
+            </p>
+            <footer>
+              <div class="testimonial-avatar" aria-hidden="true">AP</div>
+              <div>
+                <cite>Ana P.</cite>
+                <span>Emprendedora, Rosario</span>
+              </div>
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+-->
+    <!-- ============================================================
+       PRECIOS
+  ============================================================ -->
+    <section
+      class="section precios"
+      id="precios"
+      aria-labelledby="precios-heading"
+    >
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label reveal">Inversión</span>
+          <h2 class="section-title reveal" id="precios-heading">
+            Planes claros,<br /><em>sin sorpresas</em>
+          </h2>
+          <p class="section-desc reveal">
+            Todo incluido. Sin costos ocultos. Precios en USD.
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="pricing-card reveal" data-delay="0">
+            <div class="pricing-header">
+              <h3>Starter</h3>
+              <div class="pricing-price">
+                <span class="price-currency">USD</span>
+                <span class="price-amount">99</span>
+              </div>
+              <p>Para emprendedores que quieren arrancar rápido</p>
+            </div>
+            <ul class="pricing-features" role="list">
+              <li>Landing page de 1 página</li>
+              <li>Copy generado con IA</li>
+              <li>Diseño responsive</li>
+              <li>Formulario de contacto</li>
+              <li>Google Analytics integrado</li>
+              <li>SEO básico</li>
+              <li>Entrega en 7 días</li>
+            </ul>
+            <a href="#contacto" class="btn btn-outline">Empezar →</a>
+          </article>
+
+          <article
+            class="pricing-card pricing-card--featured reveal"
+            data-delay="150"
+          >
+            <div class="pricing-badge">Recomendado</div>
+            <div class="pricing-header">
+              <h3>Pro</h3>
+              <div class="pricing-price">
+                <span class="price-currency">USD</span>
+                <span class="price-amount">299</span>
+              </div>
+              <p>Para negocios que quieren destacar de la competencia</p>
+            </div>
+            <ul class="pricing-features" role="list">
+              <li>Sitio de hasta 6 secciones</li>
+              <li>Copy + imágenes con IA</li>
+              <li>Diseño premium personalizado</li>
+              <li>Integraciones WhatsApp + redes</li>
+              <li>SEO on-page avanzado</li>
+              <li>Blog / noticias</li>
+              <li>Soporte 30 días</li>
+              <li>Entrega en 14 días</li>
+            </ul>
+            <a href="#contacto" class="btn btn-primary">Empezar →</a>
+          </article>
+
+          <article class="pricing-card reveal" data-delay="300">
+            <div class="pricing-header">
+              <h3>(PROXIMAMENTE)</h3>
+              <h3>Business</h3>
+              <div class="pricing-price">
+                <span class="price-currency">USD</span>
+                <span class="price-amount">699</span>
+              </div>
+              <p>Para empresas que necesitan solución completa</p>
+            </div>
+            <ul class="pricing-features" role="list">
+              <li>Sitio multi-sección completo</li>
+              <li>E-commerce integrado</li>
+              <li>Panel de administración</li>
+              <li>Pasarela de pagos</li>
+              <li>SEO técnico avanzado</li>
+              <li>Soporte 60 días</li>
+              <li>Mantenimiento mensual</li>
+              <li>A/B testing configurado</li>
+            </ul>
+            <a href="#contacto" class="btn btn-outline">Consultar →</a>
+          </article>
+        </div>
+
+        <p class="pricing-note reveal">
+          ¿Tenés un proyecto especial?
+          <a href="#contacto">Hablemos y armamos algo a medida.</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+       CTA PARALLAX
+  ============================================================ 
+    <section class="cta-parallax" aria-labelledby="cta-heading">
+      <div class="cta-parallax-bg" data-parallax="0.4" aria-hidden="true">
+        <div class="cta-orb cta-orb-1"></div>
+        <div class="cta-orb cta-orb-2"></div>
+      </div>
+      <div class="container">
+        <div class="cta-glass reveal">
+          <h2 id="cta-heading">
+            Tu negocio merece una web<br /><span class="text-gradient"
+              >que trabaje por vos.</span
+            >
+          </h2>
+          <p>
+            Más de 120 negocios argentinos ya dan una primera impresión
+            profesional. Sumate hoy.
+          </p>
+          <a href="#contacto" class="btn btn-primary btn-large">
+            Quiero mi web gratis de consulta
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M3 9h12M9 3l6 6-6 6"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+          <p class="cta-note">Sin compromiso · Respuesta en menos de 24hs</p>
+        </div>
+      </div>
+    </section>
+-->
+  
+<section class="brief-cta" id="brief">
+  <div class="brief-cta__content">
+
+    <span class="brief-cta__tag">
+      Brief inicial
+    </span>
+
+    <h2>
+      ¿Ya estás listo para empezar tu web?
+    </h2>
+
+    <p>
+      Completá este formulario y contame qué necesitás,
+      qué estilo buscás y qué objetivos tiene tu negocio.
+      Así puedo prepararte una propuesta personalizada.
+    </p>
+
+    <a href="/brief.html" class="brief-cta__btn">
+      Completar formulario →
+    </a>
+
+  </div>
+</section>
+
+    <!-- ============================================================
+       CONTACTO
+  ============================================================ -->
+    <section
+      class="section contacto"
+      id="contacto"
+      aria-labelledby="contacto-heading"
+    >
+      <div class="container">
+        <div class="contacto-inner">
+          <div class="contacto-info reveal">
+            <span class="section-label">Contacto</span>
+            <h2 id="contacto-heading">
+              Empezá hoy.<br /><span class="text-gradient">Hablemos.</span>
+            </h2>
+            <p>
+              Contanos de tu negocio y en menos de 24hs te respondemos con una
+              propuesta personalizada. Sin costo, sin compromiso.
+            </p>
+
+            <div class="contact-items">
+              <a
+                href="https://wa.me/5492213033066"
+                class="contact-item"
+                target="_blank"
+                rel="noopener"
+              >
+                <div class="contact-icon">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M17.5 3C15.7 1.2 13.4.2 11 .2 6.3.2 2.4 4 2.4 8.8c0 1.5.4 3 1.1 4.3L2 18l5.1-1.4c1.3.7 2.7 1.1 4.2 1.1h.1c4.7 0 8.6-3.9 8.6-8.6 0-2.3-1-4.5-2.5-6.1zM11 16.3c-1.3 0-2.7-.4-3.8-1l-.3-.2-3 .8.8-2.9-.2-.3c-.7-1.1-1-2.4-1-3.7 0-3.9 3.2-7 7-7 1.9 0 3.6.7 4.9 2 1.3 1.3 2 3.1 2 4.9.2 3.9-3 7.1-6.9 7.1zm3.8-5.3c-.2-.1-1.2-.6-1.4-.7-.2-.1-.4-.1-.5.1-.2.2-.6.7-.8.9-.1.2-.3.2-.5.1-.7-.3-1.4-.7-1.9-1.3-.5-.5-.9-1.1-1-1.8 0-.2 0-.4.2-.5l.3-.4c.1-.1.1-.3.2-.4 0-.1 0-.3-.1-.4-.1-.1-.5-1.2-.7-1.7-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.5.5-.9 1.1-.9 1.9 0 .9.7 1.7 1.2 2.3.8 1 1.8 1.8 3 2.3.4.2.8.3 1.2.4.5.1.9 0 1.3-.2.4-.2.9-.8 1-1.5l.1-.4c-.1-.1-.3-.2-.5-.3z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <strong>WhatsApp</strong>
+                  <span>+54 9 221 303-3066</span>
+                </div>
+              </a>
+
+              <a href="mailto:studioimpulsoweb@gmail.com" class="contact-item">
+                <div class="contact-icon">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M2 4h16v12H2zM2 4l8 7 8-7"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <strong>Email</strong>
+                  <span>studioimpulsoweb@gmail.com</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <form
+  class="contact-form reveal"
+  id="contactForm"
+  action="https://api.web3forms.com/submit"
+  method="POST"
+  aria-label="Formulario de contacto"
+>
+          
+            <div class="form-group">
+              <label for="nombre">Tu nombre</label>
+              <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                placeholder="Nombre completo"
+                required
+                autocomplete="name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="Whatsapp">Tu número de WhatsApp</label>
+              <input
+                type="text"
+                id="Whatsapp"
+                name="Whatsapp"
+                placeholder="Ej: +54 9 11 123-4567"
+                required
+                autocomplete="phone"
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="tu@email.com"
+                required
+                autocomplete="email"
+              />
+            </div>
+            <div class="form-group">
+              <label for="negocio">¿A qué se dedica tu negocio?</label>
+              <input
+                type="text"
+                id="negocio"
+                name="negocio"
+                placeholder="Ej: Consultoría de RRHH"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="mensaje">¿Qué necesitás?</label>
+              <textarea
+                id="mensaje"
+                name="mensaje"
+                placeholder="Contanos un poco sobre tu proyecto..."
+                rows="4"
+                required
+              ></textarea>
+            </div>
+            <div class="form-group form-select-group">
+              <label for="plan">Plan de interés</label>
+              <select id="plan" name="plan" required>
+                <option value="">Seleccionar plan...</option>
+                <option value="starter">Starter — USD 99</option>
+                <option value="pro">Pro — USD 299</option>
+                <option value="business">Business — USD 699</option>
+                <option value="custom">Proyecto a medida</option>
+              </select>
+            </div>
+          <input type="hidden" name="access_key" value="f49aa82e-8252-43c2-a390-9a9e35567040">
+<input type="hidden" name="subject" value="Nueva consulta desde Alto Impacto Web">
+<input type="hidden" name="from_name" value="Alto Impacto Web">
+<input type="hidden" name="redirect" value="https://altoimpactoweb.lat?enviado=true">
+
+            <button type="submit" class="btn btn-primary btn-full">
+              <span class="btn-text">Enviar consulta</span>
+              <span class="btn-loading" aria-hidden="true">Enviando...</span>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M3 8h10M8 3l5 5-5 5"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <div class="form-success" role="alert" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  <!-- ============================================================
+       FAQ
+  ============================================================ -->
+    <section class="section faq" id="faq" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label reveal">FAQ</span>
+          <h2 class="section-title reveal" id="faq-heading">
+            Preguntas<br /><em>frecuentes</em>
+          </h2>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item reveal" data-delay="0">
+            <summary>¿Qué tan rápido puedo tener mi web?</summary>
+            <p>
+              El plan Starter se entrega en 7 dias habiles. El Pro en 14 días
+              hábiles y el Business en 21 días. Los tiempos corren desde que
+              aprobás el diseño inicial.
+            </p>
+          </details>
+          <details class="faq-item reveal" data-delay="100">
+            <summary>¿La web se ve genérica porque usa IA?</summary>
+            <p>
+              No. La IA es nuestra herramienta, no el resultado. Usamos ChatGPT
+              para accelerar el proceso, pero cada web está personalizada según
+              tu marca, industria y público. El resultado final es único.
+            </p>
+          </details>
+          <details class="faq-item reveal" data-delay="200">
+            <summary>¿Incluye el dominio y hosting?</summary>
+            <p>
+              El desarrollo está incluido en el precio. El dominio y hosting
+              tienen costo aparte (promedio USD 15-30/año). Podés usar tu
+              proveedor actual o te ayudamos a contratar uno.
+            </p>
+          </details>
+          <details class="faq-item reveal" data-delay="300">
+            <summary>¿Puedo editar la web yo mismo después?</summary>
+            <p>
+              Sí. Entregamos la web con un sistema de gestión de contenido (CMS)
+              simple o con acceso directo al código, según prefieras. También
+              ofrecemos mantenimiento mensual si preferís delegar todo.
+            </p>
+          </details>
+          <details class="faq-item reveal" data-delay="400">
+            <summary>¿Hacen webs para cualquier tipo de negocio?</summary>
+            <p>
+              Sí. Hemos trabajado con abogados, coaches, restaurantes,
+              e-commerces, estudios de diseño, consultoras, clínicas y más. La
+              IA nos permite adaptarnos rápido a cualquier industria.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a
+              href="#hero"
+              class="nav-logo"
+              aria-label="AltoImpacto Web inicio"
+            >
+              <span class="logo-mark">AI</span>
+              <span class="logo-text">AltoImpacto<strong>Web</strong></span>
+            </a>
+            <p>
+              Presencia digital premium potenciada por inteligencia artificial.
+              Para negocios que quieren crecer.
+            </p>
+          </div>
+
+          <nav class="footer-nav" aria-label="Navegación del pie de página">
+            <div class="footer-col">
+              <h4>Servicios</h4>
+              <ul role="list">
+                <li><a href="#servicios">Landing Pages</a></li>
+                <li><a href="#servicios">Sitios Corporativos</a></li>
+                <li><a href="#servicios">E-commerce</a></li>
+                <li><a href="#servicios">Rediseño</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>Empresa</h4>
+              <ul role="list">
+                <li><a href="#como-funciona">Proceso</a></li>
+                <li><a href="#resultados">Resultados</a></li>
+                <li><a href="#precios">Precios</a></li>
+                <li><a href="#faq">FAQ</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>Contacto</h4>
+              <ul role="list">
+                <li>
+                  <a
+                    href="https://wa.me/5492213033066"
+                    target="_blank"
+                    rel="noopener"
+                    >WhatsApp</a
+                  >
+                </li>
+                <li><a href="mailto:studioimpulsoweb@gmail.com">Email</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            © <span id="currentYear"></span> AltoImpacto Web. Todos los derechos
+            reservados.
+          </p>
+          <p>Hecho con VS en Argentina 🇦🇷</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button class="back-to-top" id="backToTop" aria-label="Volver al inicio">
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 18 18"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M9 14V4M4 9l5-5 5 5"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
+
+    <script src="js/main.js"></script>
+
+    <!-- ── Modal: Demo interactiva Turnos Padel PRO ── -->
+    <div
+      id="demoModal"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Demo interactiva — Turnos Padel PRO"
+    >
+      <div class="demo-modal__header">
+        <span class="demo-modal__title">Turnos Padel PRO — Demo interactiva</span>
+        <button
+          class="demo-modal__close"
+          onclick="closeDemoModal()"
+          aria-label="Cerrar demo"
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <iframe
+        id="demoFrame"
+        class="demo-modal__frame"
+        src=""
+        title="Turnos Padel PRO — Demo interactiva"
+      ></iframe>
+    </div>
+
+    <script>
+      function openDemoModal() {
+        var modal = document.getElementById('demoModal');
+        var frame = document.getElementById('demoFrame');
+        if (!frame.getAttribute('data-loaded')) {
+          frame.src = 'demo-padel.html';
+          frame.setAttribute('data-loaded', '1');
+        }
+        modal.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeDemoModal() {
+        document.getElementById('demoModal').classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeDemoModal();
+      });
+    </script>
+    <!-- BOTONES FLOTANTES -->
+<div class="floating-social">
+
+  <a
+    href="https://wa.me/5492213033066"
+    class="floating-btn whatsapp"
+    target="_blank"
+    rel="noopener"
+    aria-label="WhatsApp"
+  >
+    <svg width="16" height="16" viewBox="0 0 32 32" fill="none">
+      <path
+        d="M27.3 4.7A15.7 15.7 0 0016.1 0C7.3 0 .1 7.1.1 15.9c0 2.8.7 5.5 2 7.9L0 32l8.4-2.2a15.8 15.8 0 007.6 1.9h.1c8.8 0 15.9-7.1 15.9-15.9 0-4.2-1.6-8.2-4.7-11.1zM16.1 29c-2.3 0-4.5-.6-6.5-1.8l-.5-.3-5 1.3 1.3-4.9-.3-.5A13 13 0 013 15.9C3 8.7 8.9 2.8 16.1 2.8c3.5 0 6.8 1.4 9.2 3.8a13 13 0 013.8 9.2c0 7.2-5.9 13.1-13 13.1zm7.2-9.8c-.4-.2-2.2-1.1-2.5-1.2-.3-.1-.5-.2-.7.2-.2.3-.8 1.2-1 1.4-.2.2-.4.3-.8.1-.4-.2-1.7-.6-3.2-2-.5-.5-1-1.2-1.4-1.9-.1-.3 0-.5.1-.7.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5s-.7-1.8-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s1 2.4 1.2 2.7c.2.3 2 3.1 4.8 4.3.7.3 1.2.5 1.7.7.7.2 1.3.2 1.8.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.7-.4z"
+        fill="currentColor"
+      />
+    </svg>
+  </a>
+
+  <a
+    href="https://instagram.com/altoimpacto.web"
+    class="floating-btn instagram"
+    target="_blank"
+    rel="noopener"
+    aria-label="Instagram"
+  >
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+      <path
+        d="M17 3H7C4.8 3 3 4.8 3 7V17C3 19.2 4.8 21 7 21H17C19.2 21 21 19.2 21 17V7C21 4.8 19.2 3 17 3Z"
+        stroke="currentColor"
+        stroke-width="2"
+      />
+      <path
+        d="M16 11.4C16.1 12 16 12.7 15.8 13.3C15.6 13.9 15.2 14.4 14.7 14.8C14.2 15.2 13.6 15.5 13 15.6C12.4 15.7 11.7 15.7 11.1 15.4C10.5 15.2 10 14.8 9.6 14.3C9.2 13.8 8.9 13.2 8.8 12.6C8.7 12 8.7 11.3 9 10.7C9.2 10.1 9.6 9.6 10.1 9.2C10.6 8.8 11.2 8.5 11.8 8.4C12.4 8.3 13.1 8.3 13.7 8.6C14.3 8.8 14.8 9.2 15.2 9.7C15.6 10.2 15.9 10.8 16 11.4Z"
+        stroke="currentColor"
+        stroke-width="2"
+      />
+      <path
+        d="M17.5 6.5H17.51"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+      />
+    </svg>
+  </a>
+
+</div>
+  </body>
+</html>
