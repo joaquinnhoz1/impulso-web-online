@@ -1,5 +1,6 @@
 {
-  "buildCommand": "echo ok",
-  "outputDirectory": "nueva-web-editada",
-  "installCommand": ""
+  "rewrites": [
+    { "source": "/", "destination": "/nueva-web-editada/index.html" },
+    { "source": "/:path*", "destination": "/nueva-web-editada/:path*" }
+  ]
 }
