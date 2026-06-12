@@ -258,10 +258,28 @@
 
     /* ── touch swipe ──────────────────────────────────────── */
     var touchStartX = 0;
+    var touchStartY = 0;
+    var touchLocked = false; /* true once we know direction */
 
     stage.addEventListener('touchstart', function (e) {
       touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      touchLocked = false;
     }, { passive: true });
+
+    /* non-passive so we can call preventDefault on horizontal swipes */
+    stage.addEventListener('touchmove', function (e) {
+      var dx = e.touches[0].clientX - touchStartX;
+      var dy = e.touches[0].clientY - touchStartY;
+      if (!touchLocked) {
+        touchLocked = true;
+        /* only hijack clearly horizontal gestures */
+        if (Math.abs(dx) <= Math.abs(dy)) return;
+      }
+      if (Math.abs(dx) > Math.abs(dy)) {
+        e.preventDefault(); /* block page scroll while swiping cards */
+      }
+    }, { passive: false });
 
     stage.addEventListener('touchend', function (e) {
       var cardW     = cardEls[0].offsetWidth || 320;
