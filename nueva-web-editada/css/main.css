@@ -1106,3 +1106,204 @@ padding-top: 40px;
     display: none;
   }
 }
+
+/* ============================================================
+   AURORA SYSTEM — Glass morphism + WebGL aurora
+   Replicates the starfall-portfolio-landing visual language
+============================================================ */
+
+/* ── FLOAT ANIMATION ─────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+/* ── HERO: centrado + float + aurora ─────────────────────── */
+.hero-content {
+  text-align: center;
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+.hero-title-group {
+  animation: float 6s ease-in-out infinite;
+  animation-delay: 1.1s;
+  animation-fill-mode: both;
+}
+
+.hero-subtitle {
+  margin-inline: auto;
+}
+
+.hero-actions {
+  justify-content: center !important;
+}
+
+.hero-social-proof {
+  justify-content: center;
+}
+
+/* Desvanecer orbs — aurora los reemplaza */
+.hero-orb {
+  opacity: 0.05 !important;
+}
+
+/* Grid sutil sobre aurora */
+.hero-grid {
+  opacity: 0.3;
+}
+
+/* ── GLASS NAVBAR ────────────────────────────────────────── */
+.navbar {
+  background: rgba(8, 11, 18, 0.45) !important;
+  backdrop-filter: blur(24px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  box-shadow: none !important;
+}
+
+.navbar.scrolled {
+  background: rgba(8, 11, 18, 0.82) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Logo mark: glass en lugar de gradiente */
+.logo-mark {
+  background: rgba(255, 255, 255, 0.07) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--text-1) !important;
+}
+
+/* Nav button glass */
+.btn-nav {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-radius: 10px !important;
+}
+
+.btn-nav:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  box-shadow: none !important;
+}
+
+/* ── GLASS CARDS ─────────────────────────────────────────── */
+.service-card,
+.pricing-card,
+.testimonial,
+.problem-card {
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(16px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(130%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+}
+
+.service-card--featured {
+  background: linear-gradient(
+    135deg,
+    rgba(79, 141, 255, 0.07) 0%,
+    rgba(124, 58, 237, 0.05) 100%
+  ) !important;
+  border-color: rgba(79, 141, 255, 0.15) !important;
+}
+
+.pricing-card--featured {
+  background: linear-gradient(
+    135deg,
+    rgba(79, 141, 255, 0.08) 0%,
+    rgba(124, 58, 237, 0.06) 100%
+  ) !important;
+  border-color: rgba(79, 141, 255, 0.18) !important;
+  box-shadow:
+    0 0 0 1px rgba(79, 141, 255, 0.09),
+    0 20px 60px rgba(79, 141, 255, 0.09) !important;
+}
+
+.problem-card--highlight {
+  background: linear-gradient(
+    135deg,
+    rgba(124, 58, 237, 0.07) 0%,
+    rgba(79, 141, 255, 0.04) 100%
+  ) !important;
+  border-color: rgba(124, 58, 237, 0.15) !important;
+}
+
+.portfolio-card {
+  background: rgba(255, 255, 255, 0.025) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+/* ── GLASS CTA ───────────────────────────────────────────── */
+.cta-glass {
+  background: rgba(255, 255, 255, 0.025) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+}
+
+.brief-cta__content {
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+}
+
+/* ── GLASS STATS ─────────────────────────────────────────── */
+.stats-row {
+  background: rgba(255, 255, 255, 0.025) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+}
+
+/* ── GLASS FORM ──────────────────────────────────────────── */
+.form-group input,
+.form-group textarea,
+.form-group select {
+  background: rgba(255, 255, 255, 0.04) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ── GLASS CONTACT ITEMS ─────────────────────────────────── */
+.contact-item {
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ── GLASS FAQ ───────────────────────────────────────────── */
+.faq-item {
+  background: rgba(255, 255, 255, 0.025) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+}
+
+/* ── GHOST BTN glass ─────────────────────────────────────── */
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.04) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+/* ── GUARANTEE STRIP glass ───────────────────────────────── */
+.guarantee-strip {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ── Mobile: center hero actions ─────────────────────────── */
+@media (max-width: 768px) {
+  .hero-actions {
+    align-items: center !important;
+  }
+}
