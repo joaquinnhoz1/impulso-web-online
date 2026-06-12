@@ -1506,23 +1506,39 @@ padding-top: 40px;
 /* ── MOBILE PERFORMANCE ──────────────────────────────────── */
 /* Applied on any touch device regardless of screen width     */
 @media (pointer: coarse) {
-  /* backdrop-filter forces a GPU compositing layer per element —
-     with 40+ instances and the aurora behind them it tanks mobile fps */
-  *, *::before, *::after {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-  }
+  /* Aurora is off on mobile → backdrop-filter no longer re-composites every
+     frame. Keep blur on key surfaces; remove only from low-priority elements
+     and reduce radius so the GPU layer cost stays manageable. */
 
-  /* Solidify surfaces that relied on blur for depth */
-  .navbar           { background: rgba(8, 11, 18, 0.95) !important; }
+  /* Low-priority elements — solid bg is indistinguishable */
+  .form-group input,
+  .form-group textarea,
+  .form-group select  { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+  .contact-item       { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; background: rgba(255,255,255,0.04) !important; }
+  .guarantee-strip    { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+  .stats-row          { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; background: rgba(255,255,255,0.04) !important; }
+
+  /* Key surfaces — keep blur, reduce radius for lower GPU cost */
+  .navbar {
+    backdrop-filter: blur(16px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(150%) !important;
+    background: rgba(8, 11, 18, 0.75) !important;
+    /* Remove backdrop-filter from the transition — animated blur = jank */
+    transition: background 0.3s, box-shadow 0.3s, padding 0.3s !important;
+  }
   .service-card,
   .pricing-card,
   .problem-card,
   .testimonial,
-  .faq-item         { background: rgba(255, 255, 255, 0.05) !important; }
-  .stats-row        { background: rgba(255, 255, 255, 0.04) !important; }
+  .faq-item {
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+  }
   .cta-glass,
-  .brief-cta__content { background: rgba(13, 17, 32, 0.9) !important; }
+  .brief-cta__content {
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+  }
 
   /* Kill decorative float/orb animations — not visible value on mobile */
   .hero-orb         { animation: none !important; }

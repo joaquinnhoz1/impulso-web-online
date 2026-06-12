@@ -33,6 +33,13 @@
       tags: ['Productos Regionales', 'E-commerce', 'Landing Page'],
       imageSrc: 'img/proyecto-el-chacarero.jpg',
       href: 'https://el-chacarero.vercel.app/'
+    },
+    {
+      title: 'NutriBCG',
+      description: 'Sitio para licenciada en nutrición. Reserva de turnos, planes personalizados y acompañamiento nutricional online.',
+      tags: ['Salud', 'Profesional', 'Landing Page'],
+      imageSrc: 'img/proyecto-nutribcg.jpg',
+      href: 'https://nutribcg.vercel.app/'
     }
   ];
 
