@@ -101,6 +101,7 @@
   const parallaxEls = document.querySelectorAll('[data-parallax]');
   if (!parallaxEls.length) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (navigator.maxTouchPoints > 0 || 'ontouchstart' in window) return;
 
   function onScroll() {
     parallaxEls.forEach(el => {
@@ -120,6 +121,7 @@
   const orbs = document.querySelectorAll('.hero-orb');
   if (!orbs.length) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (navigator.maxTouchPoints > 0 || 'ontouchstart' in window) return;
 
   const speeds = [0.04, 0.07, 0.05];
 

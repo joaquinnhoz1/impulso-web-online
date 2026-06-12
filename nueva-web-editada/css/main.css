@@ -1502,3 +1502,36 @@ padding-top: 40px;
   .cstack-stage { height: 360px; }
   .cstack-card  { height: 260px; }
 }
+
+/* ── MOBILE PERFORMANCE ──────────────────────────────────── */
+/* Applied on any touch device regardless of screen width     */
+@media (pointer: coarse) {
+  /* backdrop-filter forces a GPU compositing layer per element —
+     with 40+ instances and the aurora behind them it tanks mobile fps */
+  *, *::before, *::after {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Solidify surfaces that relied on blur for depth */
+  .navbar           { background: rgba(8, 11, 18, 0.95) !important; }
+  .service-card,
+  .pricing-card,
+  .problem-card,
+  .testimonial,
+  .faq-item         { background: rgba(255, 255, 255, 0.05) !important; }
+  .stats-row        { background: rgba(255, 255, 255, 0.04) !important; }
+  .cta-glass,
+  .brief-cta__content { background: rgba(13, 17, 32, 0.9) !important; }
+
+  /* Kill decorative float/orb animations — not visible value on mobile */
+  .hero-orb         { animation: none !important; }
+  .hchip            { animation: none !important; display: none !important; }
+  .hero-title-group { animation: none !important; }
+
+  /* Slow logo marquee slightly to reduce repaints */
+  .logos-slide      { animation-duration: 50s !important; }
+
+  /* Remove will-change on card stack — GPU layers waste mobile VRAM */
+  .cstack-card      { will-change: auto; }
+}

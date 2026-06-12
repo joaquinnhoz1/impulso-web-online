@@ -5,6 +5,9 @@
 ;(function () {
   'use strict';
 
+  /* Skip on touch/mobile — WebGL render loop is too heavy on mobile GPU */
+  if (navigator.maxTouchPoints > 0 || 'ontouchstart' in window) return;
+
   var canvas = document.createElement('canvas');
   canvas.id = 'aurora-bg';
   canvas.setAttribute('aria-hidden', 'true');
