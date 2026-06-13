@@ -1551,48 +1551,31 @@ padding-top: 40px;
   /* Remove will-change on card stack — GPU layers waste mobile VRAM */
   .cstack-card      { will-change: auto; }
 
-  /* ── Card stack: image top / info panel bottom ────────── */
-  .cstack-stage { height: 400px; }
+  /* ── Card stack: full-photo + info overlay on mobile ───── */
+  .cstack-stage { height: 360px; }
+  .cstack-card  { height: 260px; }
 
-  .cstack-card {
-    display: flex;
-    flex-direction: column;
-    height: 300px;
+  /* Deeper gradient so text reads cleanly over any photo */
+  .cstack-card__grad {
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.92) 0%,
+      rgba(0, 0, 0, 0.45) 45%,
+      rgba(0, 0, 0, 0.05) 100%
+    );
   }
 
-  /* Override absolute positioning so image sits in flex flow */
-  .cstack-card__img {
-    position: relative;
-    width: 100%;
-    height: 56%;
-    flex-shrink: 0;
-  }
-
-  /* No gradient needed — image and text are separated */
-  .cstack-card__grad { display: none; }
-
-  /* Solid content panel below the image */
-  .cstack-card__body {
-    position: relative;
-    flex: 1 1 auto;
-    height: auto;
-    justify-content: flex-start;
-    background: var(--bg-2);
-    border-top: 1px solid rgba(255, 255, 255, 0.09);
-    padding: 0.6rem 0.9rem 0.65rem;
-  }
-
-  .cstack-card__tags  { margin-bottom: 0.3rem; }
+  /* Compact overlay — tags + title + CTA only */
+  .cstack-card__body  { padding: 0.85rem 1rem; }
+  .cstack-card__tags  { margin-bottom: 0.35rem; }
 
   .cstack-card__title {
-    font-size: 0.92rem;
+    font-size: 1rem;
     margin-bottom: 0;
     white-space: normal;
     line-height: 1.25;
   }
 
-  /* Description too long for the small panel — hide it */
-  .cstack-card__desc  { display: none; }
-
-  .cstack-card__cta   { margin-top: 0.35rem; font-size: 0.75rem; }
+  .cstack-card__desc { display: none; }
+  .cstack-card__cta  { margin-top: 0.4rem; font-size: 0.78rem; }
 }
