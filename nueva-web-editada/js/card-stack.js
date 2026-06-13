@@ -1,5 +1,5 @@
 /* Card Stack — Vanilla JS
-   Fan-stack card layout ported from card-stack.tsx (framer-motion → CSS transitions).
+   Fan-stack with live iframe previews + static-image placeholder.
    No dependencies. Drop-in for the #resultados section.
 */
 ;(function () {
@@ -49,7 +49,6 @@
     return ((n % len) + len) % len;
   }
 
-  /* Signed offset from active → i with loop-aware wrapping */
   function signedOff(i, act, len, loop) {
     var raw = i - act;
     if (!loop || len <= 1) return raw;
@@ -66,16 +65,16 @@
     var len   = items.length;
     if (!len) return;
 
-    /* layout config (mirrors card-stack.tsx defaults) */
-    var maxOffset    = 3;          /* Math.floor(7 / 2) */
-    var stepDeg      = 48 / maxOffset; /* spreadDeg / maxOffset = 16 deg per step */
-    var overlap      = 0.48;
-    var depthPx      = 120;
-    var tiltXDeg     = 12;
-    var activeLiftPx = 22;
-    var activeScale  = 1.03;
+    var maxOffset     = 3;
+    var stepDeg       = 48 / maxOffset;
+    var overlap       = 0.48;
+    var depthPx       = 120;
+    var tiltXDeg      = 12;
+    var activeLiftPx  = 22;
+    var activeScale   = 1.03;
     var inactiveScale = 0.94;
-    var loop         = true;
+    var loop          = true;
+    var VIRTUAL_W     = 1280; /* desktop viewport width for iframe scaling */
 
     var active = 0;
 
@@ -86,7 +85,6 @@
     stage.setAttribute('aria-label', 'Proyectos — usá las flechas del teclado para navegar');
     stage.setAttribute('role', 'region');
 
-    /* subtle ambient washes (match TSX spotlight) */
     var washT = document.createElement('div');
     washT.className = 'cstack-wash cstack-wash--top';
     washT.setAttribute('aria-hidden', 'true');
@@ -97,28 +95,90 @@
     stage.appendChild(washB);
 
     /* ── build cards ──────────────────────────────────────── */
+    var iframeEls   = [];
+    var placeholder = [];
+
     var cardEls = items.map(function (item, i) {
       var el = document.createElement('article');
       el.className = 'cstack-card';
       el.setAttribute('aria-label', item.title);
 
-      /* image layer */
-      var imgDiv = document.createElement('div');
-      imgDiv.className = 'cstack-card__img';
+      /* ── preview area ── */
+      var previewDiv = document.createElement('div');
+      previewDiv.className = 'cstack-card__img';
+
+      /* static image placeholder — shown until iframe loads */
       if (item.imageSrc) {
-        var img = document.createElement('img');
-        img.src   = item.imageSrc;
-        img.alt   = item.title;
-        img.loading   = i === 0 ? 'eager' : 'lazy';
-        img.draggable = false;
-        imgDiv.appendChild(img);
+        var ph = document.createElement('img');
+        ph.className   = 'cstack-iframe-placeholder';
+        ph.src         = item.imageSrc;
+        ph.alt         = item.title;
+        ph.loading     = i === 0 ? 'eager' : 'lazy';
+        ph.draggable   = false;
+        previewDiv.appendChild(ph);
+        placeholder.push(ph);
+      } else {
+        placeholder.push(null);
       }
 
-      /* gradient overlay */
-      var grad = document.createElement('div');
-      grad.className = 'cstack-card__grad';
+      /* browser chrome bar */
+      var bar = document.createElement('div');
+      bar.className = 'cstack-browser-bar';
+      bar.setAttribute('aria-hidden', 'true');
 
-      /* text content */
+      var dots = document.createElement('div');
+      dots.className = 'cstack-browser-dots';
+      ['#ff5f56', '#ffbd2e', '#27c93f'].forEach(function (color) {
+        var d = document.createElement('span');
+        d.style.background = color;
+        dots.appendChild(d);
+      });
+
+      var urlLabel = document.createElement('div');
+      urlLabel.className = 'cstack-browser-url';
+      urlLabel.textContent = item.href.replace(/^https?:\/\//, '').replace(/\/$/, '');
+
+      bar.appendChild(dots);
+      bar.appendChild(urlLabel);
+
+      /* iframe scaling wrapper */
+      var iframeWrap = document.createElement('div');
+      iframeWrap.className = 'cstack-iframe-wrap';
+
+      var iframe = document.createElement('iframe');
+      iframe.className = 'cstack-iframe';
+      iframe.title     = item.title;
+      iframe.setAttribute('scrolling', 'yes');
+      /* set data-src — actual src assigned lazily when stack enters viewport */
+      iframe.dataset.src = item.href;
+
+      /* fade in iframe over placeholder once the real URL loads
+         (ignore the initial about:blank load — no src attr yet) */
+      iframe.addEventListener('load', (function (idx) {
+        return function () {
+          if (!this.getAttribute('src')) return;
+          var ph = placeholder[idx];
+          if (ph) {
+            ph.style.transition = 'opacity 0.45s ease';
+            ph.style.opacity    = '0';
+          }
+          iframeEls[idx].parentElement.style.opacity = '1';
+        };
+      })(i));
+
+      iframeWrap.appendChild(iframe);
+      iframeEls.push(iframe);
+
+      /* invisible overlay — blocks pointer events on inactive cards */
+      var overlay = document.createElement('div');
+      overlay.className = 'cstack-iframe-overlay';
+      overlay.setAttribute('aria-hidden', 'true');
+
+      previewDiv.appendChild(bar);
+      previewDiv.appendChild(iframeWrap);
+      previewDiv.appendChild(overlay);
+
+      /* ── info panel ── */
       var body = document.createElement('div');
       body.className = 'cstack-card__body';
 
@@ -131,11 +191,11 @@
       });
 
       var titleEl = document.createElement('h3');
-      titleEl.className = 'cstack-card__title';
+      titleEl.className   = 'cstack-card__title';
       titleEl.textContent = item.title;
 
       var descEl = document.createElement('p');
-      descEl.className = 'cstack-card__desc';
+      descEl.className   = 'cstack-card__desc';
       descEl.textContent = item.description;
 
       body.appendChild(tagsDiv);
@@ -144,16 +204,15 @@
 
       if (item.href) {
         var cta = document.createElement('a');
-        cta.className = 'cstack-card__cta';
-        cta.href      = item.href;
-        cta.target    = '_blank';
-        cta.rel       = 'noreferrer noopener';
+        cta.className   = 'cstack-card__cta';
+        cta.href        = item.href;
+        cta.target      = '_blank';
+        cta.rel         = 'noreferrer noopener';
         cta.textContent = 'Ver proyecto →';
         body.appendChild(cta);
       }
 
-      el.appendChild(imgDiv);
-      el.appendChild(grad);
+      el.appendChild(previewDiv);
       el.appendChild(body);
       stage.appendChild(el);
       return el;
@@ -175,9 +234,84 @@
     wrap.appendChild(stage);
     wrap.appendChild(dotsEl);
 
+    /* ── iframe scale ─────────────────────────────────────── */
+    var BAR_H = 30; /* browser chrome height in px */
+
+    function updateIframeScales() {
+      var cardW = cardEls[0].offsetWidth;
+      if (!cardW) return;
+      var scale = cardW / VIRTUAL_W;
+
+      cardEls.forEach(function (el) {
+        var iframeWrap = el.querySelector('.cstack-iframe-wrap');
+        var previewDiv = el.querySelector('.cstack-card__img');
+        if (!iframeWrap || !previewDiv) return;
+
+        var availH    = previewDiv.offsetHeight - BAR_H;
+        var virtualH  = Math.max(Math.ceil(availH / scale), 768);
+        var iframe    = iframeWrap.querySelector('iframe');
+
+        if (iframe) {
+          iframe.style.width  = VIRTUAL_W + 'px';
+          iframe.style.height = virtualH  + 'px';
+        }
+        iframeWrap.style.width     = VIRTUAL_W + 'px';
+        iframeWrap.style.height    = virtualH  + 'px';
+        iframeWrap.style.transform = 'scale(' + scale + ')';
+      });
+    }
+
+    /* ── lazy load iframes ────────────────────────────────── */
+    var loaded = items.map(function () { return false; });
+
+    function loadIframe(idx) {
+      if (loaded[idx]) return;
+      loaded[idx] = true;
+      var iframe = iframeEls[idx];
+      if (iframe && iframe.dataset.src) {
+        iframe.src = iframe.dataset.src;
+      }
+    }
+
+    var loadTriggered = false;
+    function triggerLoad() {
+      if (loadTriggered) return;
+      loadTriggered = true;
+      loadIframe(active);
+      var delay = 700;
+      for (var j = 0; j < len; j++) {
+        if (j !== active) {
+          (function (idx, d) {
+            setTimeout(function () { loadIframe(idx); }, d);
+          })(j, delay);
+          delay += 700;
+        }
+      }
+    }
+
+    /* Primary: IntersectionObserver */
+    if ('IntersectionObserver' in window) {
+      var stackObserver = new IntersectionObserver(function (entries) {
+        if (!entries[0].isIntersecting) return;
+        stackObserver.disconnect();
+        triggerLoad();
+      }, { threshold: 0.01, rootMargin: '150px' });
+      stackObserver.observe(stage);
+    }
+
+    /* Fallback: scroll event + immediate check */
+    function scrollCheck() {
+      var rect = stage.getBoundingClientRect();
+      if (rect.top < window.innerHeight + 150) {
+        window.removeEventListener('scroll', scrollCheck);
+        triggerLoad();
+      }
+    }
+    window.addEventListener('scroll', scrollCheck, { passive: true });
+    scrollCheck(); /* fire immediately in case already in viewport */
+
     /* ── render ───────────────────────────────────────────── */
     function render() {
-      /* read actual card width (responsive via CSS) */
       var cardW = cardEls[0].offsetWidth;
       if (!cardW) cardW = Math.min(520, window.innerWidth * 0.82);
       var halfW       = cardW / 2;
@@ -188,35 +322,42 @@
         var abs     = Math.abs(off);
         var visible = abs <= maxOffset;
 
-        el.style.opacity      = visible ? '1' : '0';
+        el.style.opacity       = visible ? '1' : '0';
         el.style.pointerEvents = visible ? '' : 'none';
-        el.style.zIndex       = visible ? String(100 - abs) : '0';
+        el.style.zIndex        = visible ? String(100 - abs) : '0';
 
         if (!visible) return;
 
         var isActive = off === 0;
-        /* translateX: center card (-halfW) + fan offset */
-        var totalX = (off * cardSpacing) - halfW;
-        var y      = abs * 10;
-        var z      = -abs * depthPx;
-        var scale  = isActive ? activeScale : inactiveScale;
-        var lift   = isActive ? -activeLiftPx : 0;
-        var rotZ   = off * stepDeg;
-        var rotX   = isActive ? 0 : tiltXDeg;
+        var totalX   = (off * cardSpacing) - halfW;
+        var y        = abs * 10;
+        var z        = -abs * depthPx;
+        var sc       = isActive ? activeScale : inactiveScale;
+        var lift     = isActive ? -activeLiftPx : 0;
+        var rotZ     = off * stepDeg;
+        var rotX     = isActive ? 0 : tiltXDeg;
 
-        el.style.cursor = isActive ? 'grab' : 'pointer';
+        el.style.cursor    = isActive ? 'default' : 'pointer';
         el.style.transform =
-          'translateX(' + totalX + 'px) ' +
-          'translateY(' + (y + lift) + 'px) ' +
-          'translateZ(' + z + 'px) ' +
-          'rotateZ(' + rotZ + 'deg) ' +
-          'rotateX(' + rotX + 'deg) ' +
-          'scale(' + scale + ')';
+          'translateX(' + totalX   + 'px) ' +
+          'translateY(' + (y+lift) + 'px) ' +
+          'translateZ(' + z        + 'px) ' +
+          'rotateZ('    + rotZ     + 'deg) ' +
+          'rotateX('    + rotX     + 'deg) ' +
+          'scale('      + sc       + ')';
+
+        /* iframe: interactive on active, blocked on inactive */
+        var overlay    = el.querySelector('.cstack-iframe-overlay');
+        var iframeWrap = el.querySelector('.cstack-iframe-wrap');
+        if (overlay)    overlay.style.display            = isActive ? 'none' : 'block';
+        if (iframeWrap) iframeWrap.style.pointerEvents   = isActive ? 'auto' : 'none';
       });
 
       dotBtns.forEach(function (btn, idx) {
         btn.classList.toggle('is-active', idx === active);
       });
+
+      updateIframeScales();
     }
 
     function setActive(idx) {
@@ -239,6 +380,8 @@
     var dragging   = false;
     var didDrag    = false;
 
+    /* Only start drag from the card body panel or browser bar,
+       not from the iframe itself (cross-origin events don't bubble anyway) */
     stage.addEventListener('mousedown', function (e) {
       if (e.button !== 0) return;
       dragging   = true;
@@ -266,7 +409,7 @@
     /* ── touch swipe ──────────────────────────────────────── */
     var touchStartX = 0;
     var touchStartY = 0;
-    var touchLocked = false; /* true once we know direction */
+    var touchLocked = false;
 
     stage.addEventListener('touchstart', function (e) {
       touchStartX = e.touches[0].clientX;
@@ -274,17 +417,15 @@
       touchLocked = false;
     }, { passive: true });
 
-    /* non-passive so we can call preventDefault on horizontal swipes */
     stage.addEventListener('touchmove', function (e) {
       var dx = e.touches[0].clientX - touchStartX;
       var dy = e.touches[0].clientY - touchStartY;
       if (!touchLocked) {
         touchLocked = true;
-        /* only hijack clearly horizontal gestures */
         if (Math.abs(dx) <= Math.abs(dy)) return;
       }
       if (Math.abs(dx) > Math.abs(dy)) {
-        e.preventDefault(); /* block page scroll while swiping cards */
+        e.preventDefault();
       }
     }, { passive: false });
 
@@ -305,7 +446,8 @@
     /* ── resize ───────────────────────────────────────────── */
     window.addEventListener('resize', render, { passive: true });
 
-    /* initial render */
+    /* initial */
+    updateIframeScales();
     render();
   }
 
