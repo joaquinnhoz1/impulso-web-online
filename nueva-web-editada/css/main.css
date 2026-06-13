@@ -1310,9 +1310,11 @@ padding-top: 40px;
 }
 
 /* ── CARD STACK ──────────────────────────────────────────── */
+.portfolio .section-header { margin-bottom: 1.5rem; }
+
 .cstack-container {
   width: 100%;
-  margin-top: 2rem;
+  margin-top: 0;
 }
 
 .cstack-stage {
