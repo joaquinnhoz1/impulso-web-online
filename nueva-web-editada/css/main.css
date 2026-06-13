@@ -1693,3 +1693,121 @@ padding-top: 40px;
   .cstack-card__desc { display: none; }
   .cstack-card__cta  { margin-top: 0.35rem; font-size: 0.75rem; }
 }
+
+/* ============================================================
+   GRADIENT CARD — glow inferior púrpura/cyan en todas las cards
+   (excluye portfolio que tiene su propio estilo)
+============================================================ */
+
+/* ── 1 · Fondo con radial glow en la base ─────────────────── */
+.service-card,
+.pricing-card,
+.testimonial,
+.problem-card,
+.faq-item {
+  background:
+    radial-gradient(ellipse 100% 40% at 50% 108%, rgba(161, 58, 229, 0.15) 0%, transparent 70%),
+    radial-gradient(ellipse 55% 28% at  8% 110%, rgba(56, 189, 248, 0.09) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 28% at 92% 110%, rgba(172, 92, 255, 0.09) 0%, transparent 65%),
+    rgba(255, 255, 255, 0.03) !important;
+}
+
+.service-card:hover,
+.pricing-card:hover,
+.testimonial:hover,
+.problem-card:hover {
+  background:
+    radial-gradient(ellipse 100% 48% at 50% 108%, rgba(161, 58, 229, 0.24) 0%, transparent 70%),
+    radial-gradient(ellipse 55% 34% at  8% 110%, rgba(56, 189, 248, 0.15) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 34% at 92% 110%, rgba(172, 92, 255, 0.15) 0%, transparent 65%),
+    rgba(255, 255, 255, 0.05) !important;
+}
+
+.faq-item[open] {
+  background:
+    radial-gradient(ellipse 100% 44% at 50% 108%, rgba(161, 58, 229, 0.19) 0%, transparent 70%),
+    radial-gradient(ellipse 55% 32% at  8% 110%, rgba(56, 189, 248, 0.11) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 32% at 92% 110%, rgba(172, 92, 255, 0.11) 0%, transparent 65%),
+    rgba(255, 255, 255, 0.04) !important;
+}
+
+/* Variantes featured/highlight — mantienen su tinte + glow */
+.service-card--featured,
+.pricing-card--featured {
+  background:
+    radial-gradient(ellipse 100% 44% at 50% 108%, rgba(161, 58, 229, 0.19) 0%, transparent 70%),
+    radial-gradient(ellipse 55% 30% at  8% 110%, rgba(56, 189, 248, 0.13) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 30% at 92% 110%, rgba(79, 141, 255, 0.13) 0%, transparent 65%),
+    linear-gradient(135deg, rgba(79, 141, 255, 0.07) 0%, rgba(124, 58, 237, 0.06) 100%) !important;
+}
+
+.problem-card--highlight {
+  background:
+    radial-gradient(ellipse 100% 46% at 50% 108%, rgba(161, 58, 229, 0.23) 0%, transparent 70%),
+    radial-gradient(ellipse 55% 32% at  8% 110%, rgba(56, 189, 248, 0.14) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 32% at 92% 110%, rgba(172, 92, 255, 0.14) 0%, transparent 65%),
+    linear-gradient(135deg, rgba(124, 58, 237, 0.09) 0%, rgba(79, 141, 255, 0.05) 100%) !important;
+}
+
+/* ── 2 · Línea superior (grad-main) siempre visible ───────── */
+
+/* service-card ya tiene ::before — bajar opacidad base */
+.service-card::before        { opacity: 0.28 !important; }
+.service-card:hover::before  { opacity: 1    !important; }
+
+/* problem-card ya tiene ::after — bajar opacidad base */
+.problem-card::after              { opacity: 0.22 !important; }
+.problem-card:hover::after        { opacity: 1    !important; }
+.problem-card--highlight::after   { opacity: 1    !important; }
+
+/* pricing-card y testimonial — agregar ::before como línea superior */
+.pricing-card::before,
+.testimonial::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: var(--grad-main);
+  opacity: 0.28;
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 0.3s;
+}
+.pricing-card:hover::before   { opacity: 1; }
+.testimonial:hover::before    { opacity: 1; }
+.pricing-card--featured::before { opacity: 0.65; }
+
+/* ── 3 · Línea inferior con glow púrpura ──────────────────── */
+
+/* Para cards que NO usan ::after: service-card, pricing-card, testimonial, faq-item */
+.service-card::after,
+.pricing-card::after,
+.testimonial::after,
+.faq-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(172, 92, 255, 0.75) 50%, transparent 100%);
+  box-shadow:
+    0 0  8px 2px rgba(172, 92, 255, 0.55),
+    0 0 18px 4px rgba(138, 58, 185, 0.38),
+    0 0 28px 6px rgba(56,  189, 248, 0.22);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* problem-card usa ::after para la línea superior — usamos ::before para la inferior */
+.problem-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(172, 92, 255, 0.75) 50%, transparent 100%);
+  box-shadow:
+    0 0  8px 2px rgba(172, 92, 255, 0.55),
+    0 0 18px 4px rgba(138, 58, 185, 0.38),
+    0 0 28px 6px rgba(56,  189, 248, 0.22);
+  pointer-events: none;
+  z-index: 2;
+}
