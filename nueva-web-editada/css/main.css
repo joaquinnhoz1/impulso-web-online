@@ -1479,6 +1479,45 @@ padding-top: 40px;
   cursor: pointer;
 }
 
+/* Badge hint on the active (centered) card */
+.cstack-card--active .cstack-iframe-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.cstack-card--active .cstack-iframe-overlay:hover {
+  background: rgba(0, 0, 0, 0.10);
+}
+
+.cstack-card--active .cstack-iframe-overlay::after {
+  content: 'Clic para navegar →';
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  background: rgba(6, 8, 18, 0.80);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.72rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.45rem 1.15rem;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.cstack-card--active .cstack-iframe-overlay:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .cstack-card__body {
   position: relative;
   display: flex;

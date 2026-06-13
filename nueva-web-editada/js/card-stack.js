@@ -339,6 +339,7 @@
         var rotX     = isActive ? 0 : tiltXDeg;
 
         el.style.cursor    = isActive ? 'default' : 'pointer';
+        el.classList.toggle('cstack-card--active', isActive);
         el.style.transform =
           'translateX(' + totalX   + 'px) ' +
           'translateY(' + (y+lift) + 'px) ' +
