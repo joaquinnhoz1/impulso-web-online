@@ -78,6 +78,7 @@
 
     var active       = 0;
     var iframeActive = false; /* true only after user clicks the active card */
+    var isMobile     = navigator.maxTouchPoints > 0 || 'ontouchstart' in window;
 
     /* ── build stage ──────────────────────────────────────── */
     var stage = document.createElement('div');
@@ -290,26 +291,29 @@
       }
     }
 
-    /* Primary: IntersectionObserver */
-    if ('IntersectionObserver' in window) {
-      var stackObserver = new IntersectionObserver(function (entries) {
-        if (!entries[0].isIntersecting) return;
-        stackObserver.disconnect();
-        triggerLoad();
-      }, { threshold: 0.01, rootMargin: '150px' });
-      stackObserver.observe(stage);
-    }
-
-    /* Fallback: scroll event + immediate check */
-    function scrollCheck() {
-      var rect = stage.getBoundingClientRect();
-      if (rect.top < window.innerHeight + 150) {
-        window.removeEventListener('scroll', scrollCheck);
-        triggerLoad();
+    /* On mobile: skip iframe loading entirely — show static placeholders only */
+    if (!isMobile) {
+      /* Primary: IntersectionObserver */
+      if ('IntersectionObserver' in window) {
+        var stackObserver = new IntersectionObserver(function (entries) {
+          if (!entries[0].isIntersecting) return;
+          stackObserver.disconnect();
+          triggerLoad();
+        }, { threshold: 0.01, rootMargin: '150px' });
+        stackObserver.observe(stage);
       }
+
+      /* Fallback: scroll event + immediate check */
+      function scrollCheck() {
+        var rect = stage.getBoundingClientRect();
+        if (rect.top < window.innerHeight + 150) {
+          window.removeEventListener('scroll', scrollCheck);
+          triggerLoad();
+        }
+      }
+      window.addEventListener('scroll', scrollCheck, { passive: true });
+      scrollCheck(); /* fire immediately in case already in viewport */
     }
-    window.addEventListener('scroll', scrollCheck, { passive: true });
-    scrollCheck(); /* fire immediately in case already in viewport */
 
     /* ── render ───────────────────────────────────────────── */
     function render() {
