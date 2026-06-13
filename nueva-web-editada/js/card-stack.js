@@ -76,7 +76,8 @@
     var loop          = true;
     var VIRTUAL_W     = 1280; /* desktop viewport width for iframe scaling */
 
-    var active = 0;
+    var active       = 0;
+    var iframeActive = false; /* true only after user clicks the active card */
 
     /* ── build stage ──────────────────────────────────────── */
     var stage = document.createElement('div');
@@ -346,11 +347,12 @@
           'rotateX('    + rotX     + 'deg) ' +
           'scale('      + sc       + ')';
 
-        /* iframe: interactive on active, blocked on inactive */
+        /* iframe: interactive only on active card AND after user clicked */
         var overlay    = el.querySelector('.cstack-iframe-overlay');
         var iframeWrap = el.querySelector('.cstack-iframe-wrap');
-        if (overlay)    overlay.style.display            = isActive ? 'none' : 'block';
-        if (iframeWrap) iframeWrap.style.pointerEvents   = isActive ? 'auto' : 'none';
+        var interactive = isActive && iframeActive;
+        if (overlay)    overlay.style.display          = interactive ? 'none' : 'block';
+        if (iframeWrap) iframeWrap.style.pointerEvents = interactive ? 'auto' : 'none';
       });
 
       dotBtns.forEach(function (btn, idx) {
@@ -361,16 +363,37 @@
     }
 
     function setActive(idx) {
-      active = wrapIdx(idx, len);
+      active       = wrapIdx(idx, len);
+      iframeActive = false; /* reset — must click to re-enable on new card */
       render();
     }
 
-    /* ── click inactive card ──────────────────────────────── */
+    /* ── card interaction ─────────────────────────────────── */
     cardEls.forEach(function (el, i) {
+      /* click inactive card → activate it */
       el.addEventListener('click', function (e) {
         if (i !== active) {
           e.preventDefault();
           setActive(i);
+        }
+      });
+
+      /* click on overlay of active card → enable iframe interaction */
+      var ov = el.querySelector('.cstack-iframe-overlay');
+      if (ov) {
+        ov.addEventListener('click', function (e) {
+          if (i === active && !iframeActive) {
+            iframeActive = true;
+            render();
+          }
+        });
+      }
+
+      /* mouse leaves active card → restore page scroll (disable iframe) */
+      el.addEventListener('mouseleave', function () {
+        if (i === active && iframeActive) {
+          iframeActive = false;
+          render();
         }
       });
     });

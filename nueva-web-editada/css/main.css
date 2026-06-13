@@ -1470,13 +1470,13 @@ padding-top: 40px;
   display: block;
 }
 
-/* ── overlay — blocks interaction on inactive cards ─────── */
+/* ── overlay — blocks scroll/interaction by default ────── */
 .cstack-iframe-overlay {
   position: absolute;
   inset: 0;
   z-index: 10;
-  cursor: pointer;
   background: transparent;
+  cursor: pointer;
 }
 
 .cstack-card__body {
