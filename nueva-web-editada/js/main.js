@@ -5,33 +5,6 @@
 
 'use strict';
 
-/* ── CURSOR ──────────────────────────────────────────────── */
-(function initCursor() {
-  const cursor = document.getElementById('cursor');
-  const follower = document.getElementById('cursorFollower');
-  if (!cursor || !follower) return;
-  if (window.matchMedia('(pointer: coarse)').matches) return;
-
-  let fx = 0, fy = 0, cx = 0, cy = 0;
-
-  document.addEventListener('mousemove', (e) => {
-    cx = e.clientX;
-    cy = e.clientY;
-    cursor.style.left = cx + 'px';
-    cursor.style.top = cy + 'px';
-  });
-
-  function animateFollower() {
-    fx += (cx - fx) * 0.12;
-    fy += (cy - fy) * 0.12;
-    follower.style.left = fx + 'px';
-    follower.style.top = fy + 'px';
-    requestAnimationFrame(animateFollower);
-  }
-
-  animateFollower();
-})();
-
 /* ── NAVBAR ──────────────────────────────────────────────── */
 (function initNavbar() {
   const navbar = document.getElementById('navbar');
@@ -218,7 +191,12 @@
   const form = document.getElementById('contactForm');
   if (!form) return;
 
-  form.addEventListener('submit', (e) => {
+  const successBox = form.querySelector('.form-success');
+  const submitBtn = form.querySelector('button[type="submit"]');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
     const inputs = form.querySelectorAll('[required]');
     let valid = true;
 
@@ -231,21 +209,39 @@
       }
     });
 
-    const emailInput = form.querySelector('#email');
-
-    if (
-      emailInput &&
-      emailInput.value &&
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)
-    ) {
-      emailInput.classList.add('error');
-      valid = false;
-    }
-
     if (!valid) {
-      e.preventDefault();
       const firstError = form.querySelector('.error');
       if (firstError) firstError.focus();
+      return;
+    }
+
+    if (submitBtn) submitBtn.classList.add('loading');
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(form),
+      });
+      const result = await response.json();
+
+      if (result.success) {
+        form.reset();
+        if (successBox) {
+          successBox.textContent = '¡Consulta enviada! Te respondemos en menos de 24 hs.';
+          successBox.classList.add('visible');
+        }
+      } else {
+        throw new Error(result.message || 'Error al enviar');
+      }
+    } catch (err) {
+      if (successBox) {
+        successBox.textContent = 'No pudimos enviar tu consulta. Escribinos directo por WhatsApp.';
+        successBox.style.color = '#ef4444';
+        successBox.classList.add('visible');
+      }
+    } finally {
+      if (submitBtn) submitBtn.classList.remove('loading');
     }
   });
 

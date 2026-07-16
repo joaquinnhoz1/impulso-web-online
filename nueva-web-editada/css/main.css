@@ -143,16 +143,6 @@ ul { list-style: none; }
 
 }
 
-/* ── CUSTOM CURSOR (desktop only) ────────────────────────── */
-@media (pointer: fine) {
-  body { cursor: none; }
-  .cursor, .cursor-follower { pointer-events: none; position: fixed; top: 0; left: 0; z-index: 9999; border-radius: 50%; transform: translate(-50%, -50%); }
-  .cursor { width: 8px; height: 8px; background: var(--accent); mix-blend-mode: difference; }
-  .cursor-follower { width: 36px; height: 36px; border: 1.5px solid rgba(79,141,255,0.5); transition: transform 0.12s var(--ease-out), width 0.2s, height 0.2s, opacity 0.2s; }
-  body:has(a:hover) .cursor-follower,
-  body:has(button:hover) .cursor-follower { width: 56px; height: 56px; opacity: 0.6; }
-}
-
 /* ── CONTAINER ───────────────────────────────────────────── */
 .container { max-width: var(--container); margin-inline: auto; padding-inline: clamp(1.5rem, 5vw, 3rem); }
 
@@ -572,6 +562,9 @@ em { font-style: normal; background: var(--grad-text); -webkit-background-clip: 
   font-size: 0.7rem; font-family: var(--font-display); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
   background: var(--grad-main); color: #fff; padding: 0.3em 1.2em; border-radius: 99px; white-space: nowrap;
 }
+.pricing-badge--muted {
+  background: var(--surface-2); color: var(--text-2); border: 1px solid var(--border-2);
+}
 .pricing-header { margin-bottom: 2rem; }
 .pricing-header h3 { font-size: 1.1rem; margin-bottom: 1rem; }
 .pricing-price { display: flex; align-items: baseline; gap: 4px; margin-bottom: 0.5rem; }
@@ -685,8 +678,8 @@ padding-top: 40px;
 .footer-brand p { font-size: 0.875rem; color: var(--text-3); margin-top: 1rem; max-width: 260px; line-height: 1.7; }
 .footer-nav { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
 .footer-col h4 { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-2); margin-bottom: 1rem; font-family: var(--font-display); }
-.footer-col ul { display: flex; flex-direction: column; gap: 0.6rem; }
-.footer-col a { font-size: 0.875rem; color: var(--text-3); transition: color 0.2s; }
+.footer-col ul { display: flex; flex-direction: column; gap: 0.2rem; }
+.footer-col a { font-size: 0.875rem; color: var(--text-3); transition: color 0.2s; display: inline-block; padding-block: 0.5rem; }
 .footer-col a:hover { color: var(--text-1); }
 .footer-bottom { border-top: 1px solid var(--border); padding-block: 1.5rem; display: flex; justify-content: space-between; align-items: center; }
 .footer-bottom p { font-size: 0.8rem; color: var(--text-3); }
@@ -1144,10 +1137,6 @@ padding-top: 40px;
   justify-content: center;
 }
 
-/* Desvanecer orbs — aurora los reemplaza */
-.hero-orb {
-  opacity: 0.05 !important;
-}
 
 /* Grid sutil sobre aurora */
 .hero-grid {
@@ -1439,25 +1428,7 @@ padding-top: 40px;
   margin: 0 0.4rem;
 }
 
-/* ── iframe scaling wrapper ──────────────────────────────── */
-.cstack-iframe-wrap {
-  position: absolute;
-  top: 30px; /* below browser bar */
-  left: 0;
-  transform-origin: top left;
-  overflow: hidden;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.cstack-iframe {
-  border: none;
-  display: block;
-  background: #fff;
-}
-
-/* ── static placeholder (fades out after iframe loads) ───── */
+/* ── static screenshot ────────────────────────────────────── */
 .cstack-iframe-placeholder {
   position: absolute;
   top: 30px; /* below browser bar */
@@ -1468,54 +1439,6 @@ padding-top: 40px;
   object-position: top;
   pointer-events: none;
   display: block;
-}
-
-/* ── overlay — blocks scroll/interaction by default ────── */
-.cstack-iframe-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 10;
-  background: transparent;
-  cursor: pointer;
-}
-
-/* Badge hint on the active (centered) card */
-.cstack-card--active .cstack-iframe-overlay {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s ease;
-}
-
-.cstack-card--active .cstack-iframe-overlay:hover {
-  background: rgba(0, 0, 0, 0.10);
-}
-
-.cstack-card--active .cstack-iframe-overlay::after {
-  content: 'Clic para navegar →';
-  opacity: 0;
-  transform: translateY(5px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  background: rgba(6, 8, 18, 0.80);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  color: rgba(255, 255, 255, 0.92);
-  font-size: 0.72rem;
-  font-family: var(--font-body);
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 0.45rem 1.15rem;
-  border-radius: 50px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  white-space: nowrap;
-  pointer-events: none;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-}
-
-.cstack-card--active .cstack-iframe-overlay:hover::after {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .cstack-card__body {
@@ -1610,6 +1533,12 @@ padding-top: 40px;
   padding: 0;
   flex-shrink: 0;
   transition: background 0.2s ease, transform 0.2s ease;
+  position: relative;
+}
+.cstack-dot::before {
+  content: '';
+  position: absolute;
+  inset: -14px;
 }
 
 .cstack-dot:hover:not(.is-active) {
